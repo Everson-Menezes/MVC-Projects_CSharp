@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using OBM_Project.Models;
+using OBM_Project.Models.ViewModels;
 
 namespace OBM_Project.Controllers
 {

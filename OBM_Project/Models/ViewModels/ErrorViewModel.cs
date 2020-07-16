@@ -1,6 +1,5 @@
-using System;
 
-namespace OBM_Project.Models
+namespace OBM_Project.Models.ViewModels
 {
     public class ErrorViewModel
     {
