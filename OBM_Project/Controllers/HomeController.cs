@@ -24,7 +24,13 @@ namespace OBM_Project.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Entre em contato conosco.";
+
+            return View();
+        }
+        public IActionResult Services()
+        {
+            ViewData["Message"] = "Alguns dos nossos serviços.";
 
             return View();
         }
