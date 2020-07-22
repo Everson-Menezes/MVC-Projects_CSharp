@@ -30,8 +30,6 @@ namespace OBM_Project.Controllers
         }
         public IActionResult Services()
         {
-            ViewData["Message"] = "Alguns dos nossos serviços.";
-
             return View();
         }
 
