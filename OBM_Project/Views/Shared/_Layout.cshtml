@@ -30,7 +30,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Services">Serviços</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">Sobre</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contato</a></li>
@@ -42,12 +41,46 @@
     <partial name="_CookieConsentPartial" />
 
     <br />
+
     <div class="container body-content">
-        @RenderBody()
-       
-        <footer>
-           <br /><b>&copy; 2020 - OBM_Project</b> 
-        </footer>
+        <table class="table table-bordered" style="width:100%; height:100%">
+            <tr style="height:250PX">
+                <td>
+                    @RenderSection("A")
+                </td>
+                <td>
+                    @RenderSection("B")
+                </td>
+                <td>
+                    @RenderSection("C")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @RenderSection("D")
+                </td>
+                <td align="center" valign="middle">
+                    @RenderBody()
+                </td>
+                <td>
+                    @RenderSection("F")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @RenderSection("G")
+                </td>
+                <td align="center" valign="middle">
+                    <footer>
+                        <b>&copy; 2020 - OBM_Project</b>
+                    </footer>
+                </td>
+                <td>
+                    @RenderSection("I")
+                </td>
+            </tr>
+        </table>
+
     </div>
 
     <environment include="Development">
