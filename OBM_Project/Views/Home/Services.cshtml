@@ -2,35 +2,55 @@
     ViewData["Title"] = "Serviços";
 }
 
-<div class="row">
-
-    <div class="col-md-3" style="width:400px">
-        <h2>Backup &amp; Formatação</h2>
-        <ul>
-            Texto sobre formatação e um link para OrçamentoTexto sobre formatação e um link para OrçamentoTexto sobre formatação e um link para OrçamentoTexto sobre formatação e um link para Orçamento.
-        </ul>
-    </div>
-    <div class="col-md-3" style="width:300px">
-        <h2>Desenvolvimento</h2>
-        <ul>
-            Texto sobre Desenvolvimentos e um link para o portifólio Texto sobre Desenvolvimentos e um link para o portifólioTexto sobre Desenvolvimentos e um link para o portifólio Texto sobre Desenvolvimentos e um link para o portifólio
-        </ul>
-    </div>
-    <div class="col-md-3" style="width:400px">
-        <h2>Manutenção &amp; Otimização</h2>
-        <ul style="align-content:center">
-            Prestamos os serviços de manutenção técnica e suporte técnico para que o funcionamento e desempenho de computadores e notebooks, instalações de softwares, redes wi-fi e internet entre outras coisas.
-        </ul>
-    </div>
-
-</div>
 <div>
     @Html.ActionLink("Solicitar orçamento", "Orcar", "Home", null, new { @class = "btn btn-secondary btn-lg btn-block" })
 </div>
 
-@section A{ }
-@section B{ }
-@section C{ }
+@section A{
+    <div class="col-md-3" style="width:400px">
+        <h2>Backup &amp; Formatação</h2>
+
+        <h4>BACKUP:</h4>
+
+        Você imaginou abrir seu computador e perceber que seus dados “não podem mais serem acessados”. Acha difícil acontecer?<br />
+
+        Infelizmente a perda de dados é muito mais frequente do que parece e ela acontece normalmente quando não estamos preparados.<br />
+
+        Quando foi a última vez que você fez backup dos seus arquivos?<br />
+
+        Sabe responder?<br />
+
+        <h4>Formatacao:</h4>
+        Existem dois tipos de formatação, chamados de formatação física e formatação lógica.
+        A formatação física é feita na fábrica ao final do processo de fabricação, que consiste em dividir o disco virgem em trilhas, setores, cilindros e isola os bad blocks(danos no HD).
+        Estas marcações funcionam como as faixas de uma estrada, permitindo a cabeça de leitura saber em que parte do disco está, e onde ela deve gravar dados.
+        A formatação física é feita a penas uma vez, e não pode ser desfeita ou refeita através de software.
+        Porém, para que este disco possa ser reconhecido e utilizado pelo sistema operacional, é necessária uma nova formatação, chamada de formatação lógica.
+        Ao contrário da formatação física, a formatação lógica não altera a estrutura física do disco rígido, e pode ser desfeita e refeita quantas vezes for preciso.
+        O computador, no decorrer de sua utilização, tem seu desempenho geral afetado, em decorrência da instalação e remoção de diversos softwares, inclusive alguns que não removem todos os Arquivo de computador e informações do seu computador, ocasionando lentidão na sua execução.<br />
+
+    </div>
+}
+
+@section B
+{
+    <div class="col-md-3" style="width:300px">
+        <h2>Desenvolvimento</h2>
+        Texto sobre Desenvolvimentos e um link para o portifólio Texto sobre Desenvolvimentos e um link para o portifólioTexto sobre Desenvolvimentos e um link para o portifólio Texto sobre Desenvolvimentos e um link para o portifólio
+
+    </div>
+}
+
+@section C
+{
+    <div class="col-md-3" style="width:400px">
+        <h2>Manutenção &amp; Otimização</h2>
+
+        Prestamos os serviços de manutenção técnica e suporte técnico para que o funcionamento e desempenho de computadores e notebooks, instalações de softwares, redes wi-fi e internet entre outras coisas.
+
+    </div>
+}
+
 @section D{ }
 
 @section F{ }
