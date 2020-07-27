@@ -17,15 +17,11 @@ namespace OBM_Project.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Sobre nós.";
-
-            return View();
+           return View();
         }
 
         public IActionResult Contact()
-        {
-            ViewData["Message"] = "Entre em contato conosco.";
-
+        {           
             return View();
         }
         public IActionResult Services()
@@ -40,8 +36,6 @@ namespace OBM_Project.Controllers
 
         public IActionResult Orcar()
         {
-            ViewData["Message"] = "Gerenciamento de Orçamento";
-
             return View();
         }
 
