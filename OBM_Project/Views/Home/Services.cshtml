@@ -2,11 +2,12 @@
     ViewData["Title"] = "Serviços";
 }
 
-<div>
-    @Html.ActionLink("Solicitar orçamento", "Orcar", "Home", null, new { @class = "btn btn-secondary btn-lg btn-block" })
+<div class="table-bordered" style="background-color:gainsboro; width:200px; height:40px;">
+    @Html.ActionLink("Fazer Orçamento", "Orcar", "Orcamento", null, new { @class = "btn btn-secondary btn-lg btn-block" })
 </div>
 
-@section A{
+@section A
+{
     <div class="col-md-3" style="width:400px">
         <table class="table table-bordered" style="width:100%; background-color:gainsboro">
 
@@ -54,10 +55,8 @@
                     <h4>INTEGRAÇÃO DE SISTEMAS:</h4> Compartilhamento de uma única base de dados. Troca de transações em tempo real.<br />
 
                     <h4>DESENVOLVIMENTO DE SOFTWARES:</h4>
-                    As soluções de sistemas desenvolvidos pela Easy System, sejam em ambiente desktop ou web, visam contribuir na melhoria dos processos administrativos da empresa, desta forma, tornando-os mais ágeis e competitivos, acompanhando com dinamismo as exigências do mercado. 
-                    Com os softwares de aplicações feitos pela Easy System sua empresa terá uma rica variedade de controles para interface com o usuário; um total controle sobre o posicionamento dos controles na aplicação; mais rapidez no desempenho da interface e uma interface com integração para com vários hardwares.<br />
-
-
+                    As soluções de sistemas desenvolvidos pela OBM, sejam para ambiente desktop ou web, visam contribuir na melhoria dos processos administrativos do negócio, tornando-os mais ágeis e competitivos, acompanhando com dinamismo as exigências do mercado.
+                    Com os softwares de aplicações feitos pela OBM sua empresa terá uma rica variedade de controles para interface com o usuário; um total controle sobre o posicionamento dos controles na aplicação; mais rapidez no desempenho da interface e com integração para hardwares ou outros softwares.<br />
                 </td>
             </tr>
 

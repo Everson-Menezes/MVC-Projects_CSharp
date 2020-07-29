@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Orçamento";
+}
+<h3>@ViewData["Message"]</h3>
+
+<table class="table table-bordered" style="width:100%; background-color:gainsboro">
+    <tr>
+        <td>
+            <div>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Tipo de serviço</label>
+                        <select class="form-control" id="FormControlSelectArea">
+                            <option>Selecione uma opção</option>
+                            <option>Backup &amp; Formatação</option>
+                            <option>Desenvolvimento</option>
+                            <option>Manutenção &amp; Otimização</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Sub tipo</label>
+                        <select class="form-control" id="FormControlSelectArea">
+                            <option>Selecione uma opção</option>
+                            <option>3</option>
+                            <option>2</option>
+                            <option>1</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Qual a urgência do serviço</label>
+                        <select class="form-control" id="FormControlSelectArea">
+                            <option>Selecione uma opção</option>
+                            <option>Hoje ou nos próximos 7 dias</option>
+                            <option>Nos próximos 30 dias</option>
+                            <option>Não tenho data definida</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="height:200px">
+                        <label for="FormControlTextarea">Observações</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escreve seu texto aqui!" style="height:120px; resize:none"></textarea>
+                        <br />
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Teste">
+                            Enviar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="Teste" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Solicitação de orçamento</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-target="#Teste2">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               Em até 60 minutos você recebera o resultado, muito obrigado pelo contato.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>@Html.ActionLink("", "Orcar", "Orcamento", null, new { @class = "btn btn-secondary btn-lg btn-block" })
+            </div>
+        </div>
+    </div>
+</div>
+
+@section A{ }
+@section B{ }
+@section C{ }
+@section D{ }
+
+@section F{ }
+@section G{ }
+
+@section I{ }
