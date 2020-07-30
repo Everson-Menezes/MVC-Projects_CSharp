@@ -6,44 +6,38 @@
 <table style="width:100%">
     <tr>
         <td style="width:300px">
-            <form>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Email</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Área</label>
-                    <select class="form-control" id="FormControlSelectArea">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect2">Assunto</label>
-                    <input type="text" class="form-control" id="FormControlInputAssunto" placeholder="Teste">
-                </div>
-                <div class="form-group" style="height:200px">
-                    <label for="FormControlTextarea">Escreva aqui</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escreve seu texto aqui!" style="height:120px; resize:none"></textarea>
-                    <br />
-                    @Html.ActionLink("Enviar", "Orcar", "Orcamento", null, new { @class = "btn btn-primary" })
-                    <!--<input type="image" src="~/images/btn-enviar.jpg" alt="Enviar" width="110" height="40" onclick="">-->
-                </div>
-            </form>
+            <div class="col-md-7">
+                <form asp-action="EnviarEmail" asp-controller="Contato">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Email</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Área</label>
+                        <select class="form-control" id="FormControlSelectArea">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Assunto</label>
+                        <input type="text" class="form-control" id="FormControlInputAssunto" placeholder="Teste">
+                    </div>
+                    <div class="form-group" style="height:200px">
+                        <label for="FormControlTextarea">Escreva aqui</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escreve seu texto aqui!" style="height:120px; resize:none"></textarea>
+                        <br />
+
+                        <input type="image" src="~/images/btn-enviar.jpg" width="110" height="40">
+                    </div>
+                </form>
+            </div>
         </td>
-        <td>
-            <table style="width:100%">
-                <tr>
-                    <td style="width:100px; height:100%">
-                    </td>
-                    <td>
-                        <img src="~/images/banner1.svg" />
-                    </td>
-                </tr>
-            </table>
+        <td style="width:300px">
+            <a asp-action="EnviarWhatsApp" asp-controller="Contato"><input type="image" src="~/images/BotaoWhatsapp.png" width="250" height="150" /></a>
         </td>
     </tr>
 </table>

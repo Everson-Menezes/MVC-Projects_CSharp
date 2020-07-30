@@ -3,12 +3,12 @@
 }
 <h3>@ViewData["Message"]</h3>
 
-<table class="table table-bordered" style="width:100%; background-color:gainsboro">
+<table style="width:100%">
     <tr>
-        <td>
+        <td style="width:300px">
             <div>
                 <form asp-action="SolicitarOrcamento">
-                    <div class="form-group" col>
+                    <div class="form-group">
                         <label for="exampleFormControlSelect1">Tipo de serviço</label>
                         <select class="form-control" id="FormControlSelectArea">
                             <option>Selecione uma opção</option>
@@ -51,8 +51,8 @@
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#Teste">
                     Abrir popup
                 </button>
-
-<!-- Modal
+-->
+<!--Modal
 <div class="modal fade" id="Teste" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -63,10 +63,10 @@
                 </button>
             </div>
             <div class="modal-body">
-               Em até 60 minutos você recebera o resultado, muito obrigado pelo contato.
+                Em até 60 minutos você recebera o resultado, muito obrigado pelo contato.
             </div>
             <div class="modal-footer">
-              @Html.ActionLink("Ok", "SolicitarOrcamento", "Orcamento", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Ok", "SolicitarOrcamento", "Orcamento", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
