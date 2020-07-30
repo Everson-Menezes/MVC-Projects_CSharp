@@ -2,9 +2,9 @@
     ViewData["Title"] = "Serviços";
 }
 
-<div class="table-bordered" style="background-color:gainsboro; width:200px; height:40px;">
-    @Html.ActionLink("Fazer Orçamentos", "CadastrarOrcamento", "Orcamento", null, new { @class = "btn btn-secondary btn-lg btn-block" })
-</div>
+<p>
+    <a asp-action="CadastrarOrcamento" asp-controller="Orcamento" class="btn btn-default">Orçamento</a>
+</p>
 
 @section A
 {

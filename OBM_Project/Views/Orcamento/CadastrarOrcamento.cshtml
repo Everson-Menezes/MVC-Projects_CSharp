@@ -7,8 +7,8 @@
     <tr>
         <td>
             <div>
-                <form>
-                    <div class="form-group">
+                <form asp-action="SolicitarOrcamento">
+                    <div class="form-group" col>
                         <label for="exampleFormControlSelect1">Tipo de serviço</label>
                         <select class="form-control" id="FormControlSelectArea">
                             <option>Selecione uma opção</option>
@@ -38,21 +38,21 @@
                     <div class="form-group" style="height:200px">
                         <label for="FormControlTextarea">Observações</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escreve seu texto aqui!" style="height:120px; resize:none"></textarea>
+
                         <br />
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Teste">
-                            Enviar
-                        </button>
+                        <input type="submit" value="Enviar" class="btn btn-primary" />
                     </div>
                 </form>
             </div>
         </td>
     </tr>
 </table>
+<!-- Button trigger modal
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#Teste">
+                    Abrir popup
+                </button>
 
-
-
-<!-- Modal -->
+<!-- Modal
 <div class="modal fade" id="Teste" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -66,11 +66,11 @@
                Em até 60 minutos você recebera o resultado, muito obrigado pelo contato.
             </div>
             <div class="modal-footer">
-              @Html.ActionLink("Ok", "SolicitarOrcamento", "Orcamento", null, new { @class = "btn btn-secondary" })
+              @Html.ActionLink("Ok", "SolicitarOrcamento", "Orcamento", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 @section A{ }
 @section B{ }
