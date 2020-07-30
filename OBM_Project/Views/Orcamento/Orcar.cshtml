@@ -50,6 +50,8 @@
     </tr>
 </table>
 
+
+
 <!-- Modal -->
 <div class="modal fade" id="Teste" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -64,8 +66,7 @@
                Em até 60 minutos você recebera o resultado, muito obrigado pelo contato.
             </div>
             <div class="modal-footer">
-                @Html.ActionLink("OK", "SolicitarOrcamento", "Orcamento", null, new { @class = "btn btn-dark" })
-               
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>@Html.ActionLink("", "Orcar", "Orcamento", null, new { @class = "btn btn-secondary btn-lg btn-block" })
             </div>
         </div>
     </div>
