@@ -8,15 +8,13 @@ namespace OBM_Project.Controllers
 {
     public class Orcamento : Controller
     {
-        public IActionResult Orcar()
+        public IActionResult CadastrarOrcamento()
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult GerarOrcamento()
+        public IActionResult SolicitarOrcamento()
         {
-            ViewBag.Messages = "Seu orçamento ficara pronto em até 60 minutos!";
-            return View("Orcar");
+            return Content("Orçamento enviado com sucesso.");
         }
     }
 }
