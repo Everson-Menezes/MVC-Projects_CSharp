@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace OBM_Project.Controllers
 {
-    public class Orcamento : Controller
+    public class OrcamentoController : Controller
     {
         public IActionResult Orcar()
         {
-            return View();
+            return View("CadastrarOrcamento");
         }
         [HttpPost]
-        public IActionResult CadastrarOrcamento()
+        public IActionResult SolicitarOrcamento()
         {
             return Content("Teste");
         }
