@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OBM_Project.Data;
@@ -10,22 +9,20 @@ using OBM_Project.Data;
 namespace OBM_Project.Migrations
 {
     [DbContext(typeof(OBM_ProjectContext))]
-    [Migration("20200731182223_Primeira_Migration")]
-    partial class Primeira_Migration
+    [Migration("20200804151355_primeira")]
+    partial class primeira
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("OBM_Project.Models.Necessidade", b =>
+            modelBuilder.Entity("OBM_Project.Models.Orcamento.Necessidade", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Nome");
 
@@ -34,11 +31,10 @@ namespace OBM_Project.Migrations
                     b.ToTable("TB_Necessidade");
                 });
 
-            modelBuilder.Entity("OBM_Project.Models.Orcamento", b =>
+            modelBuilder.Entity("OBM_Project.Models.Orcamento.Orcamento", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("NecesssidadeId");
 
@@ -59,11 +55,10 @@ namespace OBM_Project.Migrations
                     b.ToTable("TB_Orcamentos");
                 });
 
-            modelBuilder.Entity("OBM_Project.Models.SubTipoServico", b =>
+            modelBuilder.Entity("OBM_Project.Models.Orcamento.SubTipoServico", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Nome");
 
@@ -72,11 +67,10 @@ namespace OBM_Project.Migrations
                     b.ToTable("TB_SubTipoServico");
                 });
 
-            modelBuilder.Entity("OBM_Project.Models.TipoServico", b =>
+            modelBuilder.Entity("OBM_Project.Models.Orcamento.TipoServico", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Nome");
 
@@ -85,17 +79,17 @@ namespace OBM_Project.Migrations
                     b.ToTable("TB_TipoServico");
                 });
 
-            modelBuilder.Entity("OBM_Project.Models.Orcamento", b =>
+            modelBuilder.Entity("OBM_Project.Models.Orcamento.Orcamento", b =>
                 {
-                    b.HasOne("OBM_Project.Models.Necessidade", "Necesssidade")
+                    b.HasOne("OBM_Project.Models.Orcamento.Necessidade", "Necesssidade")
                         .WithMany()
                         .HasForeignKey("NecesssidadeId");
 
-                    b.HasOne("OBM_Project.Models.SubTipoServico", "SubTipoServico")
+                    b.HasOne("OBM_Project.Models.Orcamento.SubTipoServico", "SubTipoServico")
                         .WithMany()
                         .HasForeignKey("SubTipoServicoId");
 
-                    b.HasOne("OBM_Project.Models.TipoServico", "TipoServico")
+                    b.HasOne("OBM_Project.Models.Orcamento.TipoServico", "TipoServico")
                         .WithMany()
                         .HasForeignKey("TipoServicoId");
                 });

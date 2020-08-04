@@ -14,10 +14,10 @@ namespace OBM_Project.Data
         {
         }
 
-        public DbSet<OBM_Project.Models.Orcamento.Orcamento> TB_Orcamentos { get; set; }
-        public DbSet<OBM_Project.Models.Orcamento.TipoServico> TB_TipoServico { get; set; }
-        public DbSet<OBM_Project.Models.Orcamento.SubTipoServico> TB_SubTipoServico { get; set; }
-        public DbSet<OBM_Project.Models.Orcamento.Necessidade> TB_Necessidade { get; set; }
+        public DbSet<Orcamento> TB_Orcamentos { get; set; }
+        public DbSet<TipoServico> TB_TipoServico { get; set; }
+        public DbSet<SubTipoServico> TB_SubTipoServico { get; set; }
+        public DbSet<Necessidade> TB_Necessidade { get; set; }
 
     }
 }

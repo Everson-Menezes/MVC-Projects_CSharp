@@ -12,16 +12,31 @@ namespace OBM_Project.Controllers
         {
             return View();
         }
+        public IActionResult TipoServico()
+        {
+            return View();
+        }
         public IActionResult AdicionarTipoServico()
+        {
+            //logica para add informacoes banco
+            return View();
+        }
+        public IActionResult SubTipoServico()
         {
             return View();
         }
         public IActionResult AdicionarSubTipoServico()
         {
+            //logica para add informacoes banco
+            return View();
+        }
+        public IActionResult Necessidade()
+        {
             return View();
         }
         public IActionResult AdicionarNecessidade()
         {
+            //logica para add informacoes banco
             return View();
         }
     }

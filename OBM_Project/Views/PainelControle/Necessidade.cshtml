@@ -1,12 +1,12 @@
-﻿@model OBM_Project.Models.Orcamento.TipoServico
+﻿@model OBM_Project.Models.Orcamento.Necessidade
 
 @{
-    ViewData["Title"] = "Adicionar Tipo Servico";
+    ViewData["Title"] = "Adicionar Necessidade";
 }
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="AdicionarNecessidade">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
@@ -29,3 +29,4 @@
 @section G{ }
 
 @section I{ }
+
