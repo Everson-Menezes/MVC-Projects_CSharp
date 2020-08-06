@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OBM_Project.Services;
+using OBM_Project.Models.Orcamento;
 
 namespace OBM_Project.Controllers
 {
@@ -23,10 +24,12 @@ namespace OBM_Project.Controllers
         {
             return View();
         }
-        public IActionResult AdicionarTipoServico()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AdicionarTipoServico(TipoServico tipoServico)
         {
-            //logica para add informacoes banco
-            return View();
+            _painelControleServices.AdicionarTipoServico(tipoServico);
+            return RedirectToAction(nameof(Index));
         }
         public IActionResult SubTipoServico()
         {
