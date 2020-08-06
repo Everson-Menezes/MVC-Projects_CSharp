@@ -1,26 +1,27 @@
-﻿@model OBM_Project.Models.Orcamento.Orcamento
+﻿@model IEnumerable<OBM_Project.Models.Orcamento.TipoServico>
+
 
 @{
     ViewData["Title"] = "Orçamento";
 }
-<h3>@ViewData["Message"]</h3>
-
 <table style="width:100%">
     <tr>
         <td style="width:300px">
             <div>
                 <form asp-action="SolicitarOrcamento">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Tipo de serviço</label>
-                        <select class="form-control" id="FormControlSelectArea">
-                            <option>Selecione uma opção</option>
-                            <option>Backup &amp; Formatação</option>
-                            <option>Desenvolvimento</option>
-                            <option>Manutenção &amp; Otimização</option>
+                        <label for="exampleFormControlSelect1">Tipo Serviço</label>
+                        <select class="form-control" id="FormControlSelectTipoServico">
+                            <option>selecione</option>
+                            @foreach (var item in Model)
+                            {
+                                <option>@Html.DisplayFor(modelItem => item.Nome)</option>
+                            }
+
                         </select>
-                    </div>
+                        </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Sub tipo</label>
+                        <label for="exampleFormControlSelect1">Subtipo</label>
                         <select class="form-control" id="FormControlSelectArea">
                             <option>Selecione uma opção</option>
                             <option>3</option>

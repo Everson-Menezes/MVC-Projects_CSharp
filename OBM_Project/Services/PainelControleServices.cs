@@ -17,7 +17,7 @@ namespace OBM_Project.Services
         }
         public List<TipoServico> ListarTipoServicos()
         {
-            return _ProjectContext.TB_TipoServico.ToList();
+            return _ProjectContext.TB_TipoServico.OrderBy(x => x.Nome).ToList();
         }
         public List<SubTipoServico> ListarSubTipoServicos()
         {
