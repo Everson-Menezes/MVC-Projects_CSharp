@@ -17,11 +17,7 @@ namespace OBM_Project.Controllers
 
         public IActionResult Index()
         {
-            var tipoServico = _painelControleServices.ListarTipoServicos();
-            var subTipoServico = _painelControleServices.ListarSubTipoServicos();
-            var necessidade = _painelControleServices.ListarNecessidade();
-
-            return View( tipoServico);
+            return View();
         }
         public IActionResult TipoServico()
         {
