@@ -32,8 +32,9 @@ namespace OBM_Project.Services
             return _ProjectContext.TB_Orcamentos.ToList();
         }
         public void AdicionarTipoServico(TipoServico obj)
-                {
+        {
             _ProjectContext.Add(obj);
+            _ProjectContext.SaveChanges();
         }
     }
 }
