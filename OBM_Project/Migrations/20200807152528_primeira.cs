@@ -21,19 +21,6 @@ namespace OBM_Project.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TB_SubTipoServico",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TB_SubTipoServico", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "TB_TipoServico",
                 columns: table => new
                 {
@@ -44,6 +31,26 @@ namespace OBM_Project.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TB_TipoServico", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TB_SubTipoServico",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(nullable: true),
+                    TipoServicoId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TB_SubTipoServico", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TB_SubTipoServico_TB_TipoServico_TipoServicoId",
+                        column: x => x.TipoServicoId,
+                        principalTable: "TB_TipoServico",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,6 +100,11 @@ namespace OBM_Project.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_TB_Orcamentos_TipoServicoId",
                 table: "TB_Orcamentos",
+                column: "TipoServicoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TB_SubTipoServico_TipoServicoId",
+                table: "TB_SubTipoServico",
                 column: "TipoServicoId");
         }
 

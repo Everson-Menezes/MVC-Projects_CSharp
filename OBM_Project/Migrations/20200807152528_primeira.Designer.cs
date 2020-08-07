@@ -9,7 +9,7 @@ using OBM_Project.Data;
 namespace OBM_Project.Migrations
 {
     [DbContext(typeof(OBM_ProjectContext))]
-    [Migration("20200804151355_primeira")]
+    [Migration("20200807152528_primeira")]
     partial class primeira
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,7 +62,11 @@ namespace OBM_Project.Migrations
 
                     b.Property<string>("Nome");
 
+                    b.Property<int>("TipoServicoId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TipoServicoId");
 
                     b.ToTable("TB_SubTipoServico");
                 });
@@ -92,6 +96,14 @@ namespace OBM_Project.Migrations
                     b.HasOne("OBM_Project.Models.Orcamento.TipoServico", "TipoServico")
                         .WithMany()
                         .HasForeignKey("TipoServicoId");
+                });
+
+            modelBuilder.Entity("OBM_Project.Models.Orcamento.SubTipoServico", b =>
+                {
+                    b.HasOne("OBM_Project.Models.Orcamento.TipoServico", "TipoServico")
+                        .WithMany()
+                        .HasForeignKey("TipoServicoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -36,5 +36,11 @@ namespace OBM_Project.Services
             _ProjectContext.Add(obj);
             _ProjectContext.SaveChanges();
         }
+        public void AdicionarSubTipoServico(SubTipoServico obj)
+        {
+            _ProjectContext.Add(obj);
+            var teste = obj;
+            _ProjectContext.SaveChanges();
+        }
     }
 }

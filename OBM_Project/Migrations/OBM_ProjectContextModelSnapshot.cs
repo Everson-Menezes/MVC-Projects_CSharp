@@ -60,7 +60,11 @@ namespace OBM_Project.Migrations
 
                     b.Property<string>("Nome");
 
+                    b.Property<int>("TipoServicoId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TipoServicoId");
 
                     b.ToTable("TB_SubTipoServico");
                 });
@@ -90,6 +94,14 @@ namespace OBM_Project.Migrations
                     b.HasOne("OBM_Project.Models.Orcamento.TipoServico", "TipoServico")
                         .WithMany()
                         .HasForeignKey("TipoServicoId");
+                });
+
+            modelBuilder.Entity("OBM_Project.Models.Orcamento.SubTipoServico", b =>
+                {
+                    b.HasOne("OBM_Project.Models.Orcamento.TipoServico", "TipoServico")
+                        .WithMany()
+                        .HasForeignKey("TipoServicoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

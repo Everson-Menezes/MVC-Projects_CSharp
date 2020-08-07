@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OBM_Project.Services;
 using OBM_Project.Models.Orcamento;
+using OBM_Project.Models.ViewModels;
 
 namespace OBM_Project.Controllers
 {
@@ -33,12 +34,16 @@ namespace OBM_Project.Controllers
         }
         public IActionResult SubTipoServico()
         {
-            return View();
+            var tipoServico = _painelControleServices.ListarTipoServicos();
+            var viewModel = new SubTipoServicoViewModel { TipoServicos = tipoServico };
+            return View(viewModel);
         }
-        public IActionResult AdicionarSubTipoServico()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AdicionarSubTipoServico(SubTipoServico subTipoServico)
         {
-            //logica para add informacoes banco
-            return View();
+            _painelControleServices.AdicionarSubTipoServico(subTipoServico);
+            return RedirectToAction(nameof(Index));
         }
         public IActionResult Necessidade()
         {
