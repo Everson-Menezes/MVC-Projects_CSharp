@@ -49,10 +49,10 @@ namespace OBM_Project.Controllers
         {
             return View();
         }
-        public IActionResult AdicionarNecessidade()
+        public IActionResult AdicionarNecessidade(Necessidade necessidade)
         {
-            //logica para add informacoes banco
-            return View();
+            _painelControleServices.AdicionarNecessidade(necessidade);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

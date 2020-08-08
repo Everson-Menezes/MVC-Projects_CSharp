@@ -39,7 +39,11 @@ namespace OBM_Project.Services
         public void AdicionarSubTipoServico(SubTipoServico obj)
         {
             _ProjectContext.Add(obj);
-            var teste = obj;
+            _ProjectContext.SaveChanges();
+        }
+        public void AdicionarNecessidade(Necessidade obj)
+        {
+            _ProjectContext.Add(obj);
             _ProjectContext.SaveChanges();
         }
     }
