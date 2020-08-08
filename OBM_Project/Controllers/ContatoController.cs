@@ -6,11 +6,15 @@ namespace OBM_Project.Controllers
     {
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EnviarEmail()
+        public IActionResult Mensagem()
         {
-            return Content("E-mail enviado com sucesso.");
+            return Content("Contato recebido com sucesso.");
         }
         public IActionResult EnviarWhatsApp()
+        {
+            return Redirect("https://wa.me/5513996664409");
+        }
+        public IActionResult EnviarEmail()
         {
             return Redirect("https://wa.me/5513996664409");
         }

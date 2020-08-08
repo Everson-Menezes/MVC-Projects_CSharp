@@ -6,7 +6,44 @@
 <table style="width:100%">
     <tr>
         <td style="width:300px">
-           
+            <h3>Deixe seus dados que entraremos em contato.</h3>
+
+            <table style="width:100%">
+                <tr>
+                    <td>
+                        <div>
+                            <form asp-action="Mensagem" asp-controller="Contato" style="width:300px">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Nome</label>
+                                    <input for="" class="form-control" />
+                                    <span for="" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label">E-mail</label>
+                                    <input for="" class="form-control" />
+                                    <span for="" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label">Telefone</label>
+                                    <input for="" class="form-control" />
+                                    <span for="" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label">Assunto</label>
+                                    <input for="" class="form-control" />
+                                    <span for="" class="text-danger"></span>
+                                </div>
+                                <label for="FormControlTextarea">Observações</label>
+                                <div class="form-group">
+                                    <textarea placeholder="Escreve seu texto aqui!" style="height:120px; width:400px; resize:none" class="form-control"></textarea>
+                                    <br /><br />
+                                    <input type="submit" value="Enviar" class="btn btn-default" />
+                                </div>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </td>
         <td style="width:300px">
             <a asp-action="EnviarWhatsApp" asp-controller="Contato"><input type="image" src="~/images/BotaoWhatsapp.png" width="350" height="150" /></a>
@@ -15,10 +52,16 @@
     </tr>
 </table>
 
-@section A{ }
+@section A
+{
+
+}
 @section B{ }
 @section C{ }
-@section D{ }
+@section D
+{
+
+}
 
 @section F{ }
 @section G{ }
