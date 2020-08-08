@@ -11,11 +11,12 @@
 
         }
 
-        public SubTipoServico(string nome, TipoServico tipoServico, int tipoServicoId)
+        public SubTipoServico(int id, string nome, TipoServico tipoServico)
         {
+            Id = id;
             Nome = nome;
             TipoServico = tipoServico;
-            TipoServicoId = tipoServicoId;
+            
         }
     }
 }

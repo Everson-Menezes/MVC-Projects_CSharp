@@ -40,7 +40,7 @@ namespace OBM_Project.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(nullable: true),
-                    TipoServicoId = table.Column<int>(nullable: true)
+                    TipoServicoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -9,8 +9,8 @@ namespace OBM_Project.Models.ViewModels
 {
     public class SubTipoServicoViewModel
     {
-        public int TipoServicoId { get; set; }
         public SubTipoServico SubTipoServico { get; set; }
         public ICollection<TipoServico> TipoServicos { get; set; }
+
     }
 }

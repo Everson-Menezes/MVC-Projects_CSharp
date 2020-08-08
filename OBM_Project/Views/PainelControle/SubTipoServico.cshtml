@@ -9,7 +9,7 @@
         <form asp-action="AdicionarSubTipoServico" asp-controller="PainelControle">
             <div class="form-group">
                 <label for="exampleFormControlSelect1" class="control-label">Tipo Serviço</label>
-                <select asp-items="@(new SelectList(Model.TipoServicos, "Id","Nome",Model.TipoServicos))" class="form-control">
+                <select asp-for="SubTipoServico.TipoServicoId" asp-items="@(new SelectList(Model.TipoServicos, "Id","Nome"))" class="form-control">
                     <option>Selecione</option>
                 </select>
 
