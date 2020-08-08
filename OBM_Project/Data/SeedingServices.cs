@@ -18,7 +18,6 @@ namespace OBM_Project.Data
             }
             else
             {
-                //logica para 
                 _ProjectContext.TB_TipoServico.AddRange();
                 _ProjectContext.TB_SubTipoServico.AddRange();
                 _ProjectContext.TB_Necessidade.AddRange();

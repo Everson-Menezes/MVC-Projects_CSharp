@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OBM_Project.Models.Orcamento;
+using OBM_Project.Models.ViewModels;
 using OBM_Project.Services;
 
 namespace OBM_Project.Controllers
@@ -18,12 +19,17 @@ namespace OBM_Project.Controllers
         public IActionResult CadastrarOrcamento()
         {
             var tipoServico = _painelControleServices.ListarTipoServicos();
-            return View(tipoServico);
+            var subTipoServico = _painelControleServices.ListarSubTipoServicos();
+            var necessidade = _painelControleServices.ListarNecessidade();
+            var viewModel = new CadastrarOrcamentoViewModel { TipoServicos = tipoServico, SubTipoServicos = subTipoServico, Necessidades = necessidade };
+             
+            return View(viewModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult SolicitarOrcamento()
+        public IActionResult SolicitarOrcamento(Orcamentos orcamentos)
         {
+            _painelControleServices.AdicionarOrcamento(orcamentos);
             return Content("Orçamento enviado com sucesso.");
         }
     }

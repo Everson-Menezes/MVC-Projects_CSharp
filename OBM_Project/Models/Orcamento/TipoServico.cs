@@ -8,9 +8,9 @@
         {
 
         }
-
-        public TipoServico(string nome)
+        public TipoServico(int id, string nome)
         {
+            Id = id;
             Nome = nome;
         }
     }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OBM_Project.Models.Orcamento.TipoServico>
+﻿@model OBM_Project.Models.ViewModels.CadastrarOrcamentoViewModel
 
 
 @{
@@ -6,44 +6,32 @@
 }
 <table style="width:100%">
     <tr>
-        <td style="width:300px">
+        <td>
             <div>
-                <form asp-action="SolicitarOrcamento">
+                <form asp-action="SolicitarOrcamento" asp-controller="Orcamento">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Tipo Serviço</label>
-                        <select class="form-control" id="FormControlSelectTipoServico">
+                        <select asp-for="Orcamentos.TipoServicoId" asp-items="@(new SelectList(Model.TipoServicos, "Id", "Nome"))" class="form-control">
                             <option>selecione</option>
-                            @foreach (var item in Model)
-                            {
-                                <option>@Html.DisplayFor(modelItem => item.Nome)</option>
-                            }
-
                         </select>
-                        </div>
+                    </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Subtipo</label>
-                        <select class="form-control" id="FormControlSelectArea">
+                        <label for="exampleFormControlSelect1">Subtipo Serviço</label>
+                        <select asp-for="Orcamentos.SubTipoServicoId" asp-items="@(new SelectList(Model.SubTipoServicos,"Id", "Nome"))" class="form-control">
                             <option>Selecione uma opção</option>
-                            <option>3</option>
-                            <option>2</option>
-                            <option>1</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Qual a urgência do serviço</label>
-                        <select class="form-control" id="FormControlSelectArea">
+                        <select asp-for="Orcamentos.NecessidadeId" asp-items="@(new SelectList(Model.Necessidades, "Id", "Nome"))" class="form-control">
                             <option>Selecione uma opção</option>
-                            <option>Hoje ou nos próximos 7 dias</option>
-                            <option>Nos próximos 30 dias</option>
-                            <option>Não tenho data definida</option>
                         </select>
                     </div>
-                    <div class="form-group" style="height:200px">
-                        <label for="FormControlTextarea">Observações</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escreve seu texto aqui!" style="height:120px; resize:none"></textarea>
-
-                        <br />
-                        <input type="submit" value="Enviar" class="btn btn-primary" />
+                    <label for="FormControlTextarea">Observações</label>
+                    <div class="form-group" >
+                        <textarea asp-for="Orcamentos.Observacao" placeholder="Escreve seu texto aqui!" style="height:120px; width:400px; resize:none" class="form-control"></textarea>
+                        <br /><br />
+                        <input type="submit" value="Enviar" class="btn btn-default" />
                     </div>
                 </form>
             </div>

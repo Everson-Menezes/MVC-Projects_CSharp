@@ -27,7 +27,7 @@ namespace OBM_Project.Services
         {
             return _ProjectContext.TB_Necessidade.ToList();
         }
-        public List<Orcamento> ListarOrcamentos()
+        public List<Orcamentos> ListarOrcamentos()
         {
             return _ProjectContext.TB_Orcamentos.ToList();
         }
@@ -42,6 +42,11 @@ namespace OBM_Project.Services
             _ProjectContext.SaveChanges();
         }
         public void AdicionarNecessidade(Necessidade obj)
+        {
+            _ProjectContext.Add(obj);
+            _ProjectContext.SaveChanges();
+        }
+        public void AdicionarOrcamento(Orcamentos obj)
         {
             _ProjectContext.Add(obj);
             _ProjectContext.SaveChanges();

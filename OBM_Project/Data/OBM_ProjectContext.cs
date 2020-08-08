@@ -14,7 +14,7 @@ namespace OBM_Project.Data
         {
         }
 
-        public DbSet<Orcamento> TB_Orcamentos { get; set; }
+        public DbSet<Orcamentos> TB_Orcamentos { get; set; }
         public DbSet<TipoServico> TB_TipoServico { get; set; }
         public DbSet<SubTipoServico> TB_SubTipoServico { get; set; }
         public DbSet<Necessidade> TB_Necessidade { get; set; }
