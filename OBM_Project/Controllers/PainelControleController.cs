@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OBM_Project.Services;
 using OBM_Project.Models.Orcamento;
 using OBM_Project.Models.ViewModels;
+using OBM_Project.Models.Contato;
 
 namespace OBM_Project.Controllers
 {
     public class PainelControleController : Controller
     {
         private readonly PainelControleServices _painelControleServices;
-        public PainelControleController (PainelControleServices painelControleServices)
+        private readonly ContatoServices _ContatoServices;
+        public PainelControleController (PainelControleServices painelControleServices, ContatoServices contatoServices)
         {
             _painelControleServices = painelControleServices;
+            _ContatoServices = contatoServices;
         }
 
         public IActionResult Index()
@@ -53,6 +52,15 @@ namespace OBM_Project.Controllers
         {
             _painelControleServices.AdicionarNecessidade(necessidade);
             return RedirectToAction(nameof(Index));
+        }
+        public IActionResult AdicionarArea(Area area)
+        {
+            _ContatoServices.AdicionarArea(area);
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Area()
+        {
+            return View();
         }
     }
 }

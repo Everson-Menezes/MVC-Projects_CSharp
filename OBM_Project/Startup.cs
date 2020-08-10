@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +36,7 @@ namespace OBM_Project
                     options.UseMySql(Configuration.GetConnectionString("OBM_ProjectContext"),builder => builder.MigrationsAssembly("OBM_Project")));
             services.AddScoped<SeedingServices>();
             services.AddScoped<PainelControleServices>();
+            services.AddScoped<ContatoServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

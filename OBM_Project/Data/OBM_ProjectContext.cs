@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using OBM_Project.Models.Contato;
 using OBM_Project.Models.Orcamento;
 
 namespace OBM_Project.Data
@@ -18,6 +15,8 @@ namespace OBM_Project.Data
         public DbSet<TipoServico> TB_TipoServico { get; set; }
         public DbSet<SubTipoServico> TB_SubTipoServico { get; set; }
         public DbSet<Necessidade> TB_Necessidade { get; set; }
+        public DbSet<Contatos> TB_Contatos { get; set; }
+        public DbSet<Area> TB_Area { get; set; }
 
     }
 }

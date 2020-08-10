@@ -4,12 +4,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using OBM_Project.Models.Contato;
 using OBM_Project.Models.ViewModels;
+using OBM_Project.Services;
 
 namespace OBM_Project.Controllers
 {
     public class HomeController : Controller
+
     {
+        private readonly ContatoServices _ContatoServices;
+        public HomeController(ContatoServices contatoServices)
+        {
+            _ContatoServices = contatoServices;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -17,12 +26,14 @@ namespace OBM_Project.Controllers
 
         public IActionResult About()
         {
-           return View();
+            return View();
         }
 
         public IActionResult Contact()
-        {           
-            return View();
+        {
+            var areas = _ContatoServices.ListarAreas();
+            var viewModel = new ContatosViewModel { Areas = areas };
+            return View(viewModel);
         }
         public IActionResult Services()
         {

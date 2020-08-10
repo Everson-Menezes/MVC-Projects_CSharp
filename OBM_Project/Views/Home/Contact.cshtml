@@ -1,42 +1,46 @@
-﻿@{
+﻿@model OBM_Project.Models.ViewModels.ContatosViewModel
+
+@{
     ViewData["Title"] = "Contacto";
 }
-<h3>@ViewData["Message"]</h3>
 
 <table style="width:100%">
     <tr>
-        <td style="width:300px">
+        <td>
             <h3>Deixe seus dados que entraremos em contato.</h3>
 
-            <table style="width:100%">
+            <table class="table-bordered" style="background-color:gainsboro">
                 <tr>
-                    <td>
+                    <td style="width:500px">
                         <div>
-                            <form asp-action="Mensagem" asp-controller="Contato" style="width:300px">
+                            <form asp-action="Mensagem" asp-controller="Contato" style="width:320px">
                                 <div class="form-group">
                                     <label for="" class="control-label">Nome</label>
-                                    <input for="" class="form-control" />
-                                    <span for="" class="text-danger"></span>
+                                    <input asp-for="Contatos.Nome" class="form-control" />
+                                    <span asp-for="Contatos.Nome" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="control-label">E-mail</label>
-                                    <input for="" class="form-control" />
-                                    <span for="" class="text-danger"></span>
+                                    <input asp-for="Contatos.Email" class="form-control" />
+                                    <span asp-validation-for="Contatos.Email" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="control-label">Telefone</label>
-                                    <input for="" class="form-control" />
-                                    <span for="" class="text-danger"></span>
+                                    <input asp-for="Contatos.Telefone" class="form-control" />
                                 </div>
+                                <label for="exampleFormControlSelect1">Área</label>
+                                <select asp-for="Contatos.AreaId" asp-items="@(new SelectList(Model.Areas, "Id", "Nome"))" class="form-control">
+                                    <option>selecione</option>
+                                </select>
                                 <div class="form-group">
                                     <label for="" class="control-label">Assunto</label>
-                                    <input for="" class="form-control" />
-                                    <span for="" class="text-danger"></span>
+                                    <input asp-for="Contatos.Assunto" class="form-control" />
+                                    <span asp-validation-for="Contatos.Assunto" class="text-danger"></span>
                                 </div>
                                 <label for="FormControlTextarea">Observações</label>
                                 <div class="form-group">
-                                    <textarea placeholder="Escreve seu texto aqui!" style="height:120px; width:400px; resize:none" class="form-control"></textarea>
-                                    <br /><br />
+                                    <textarea asp-for="Contatos.Conteudo" placeholder="Escreve seu texto aqui!" style="height:120px; width:400px; resize:none" class="form-control"></textarea>
+                                    <br />
                                     <input type="submit" value="Enviar" class="btn btn-default" />
                                 </div>
                             </form>
@@ -46,10 +50,15 @@
             </table>
         </td>
         <td style="width:300px">
-            <a asp-action="EnviarWhatsApp" asp-controller="Contato"><input type="image" src="~/images/BotaoWhatsapp.png" width="350" height="150" /></a>
-            <a asp-action="EnviarEmail" asp-controller="Contato"> <input type="image" src="~/images/btn-enviar.jpg" width="350" height="150" /></a>
+            <a asp-action="EnviarWhatsApp" asp-controller="Contato"><input type="image" src="~/images/BotaoWhatsapp.png" width="350" height="150" /></a><br />
+            <br />
+            <br />
+            <p><b>Endereço:</b> R. Fortunata Bernardelo Menegheti, 141 - Montanhão, São Bernardo do Campo - SP, 09791-810</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.0258667028747!2d-46.534461685615376!3d-23.746456984591333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQ0JzQ3LjMiUyA0NsKwMzEnNTYuMiJX!5e0!3m2!1spt-BR!2sbr!4v1597079395635!5m2!1spt-BR!2sbr" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
         </td>
     </tr>
+   
 </table>
 
 @section A

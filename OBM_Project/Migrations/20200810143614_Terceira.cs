@@ -3,10 +3,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OBM_Project.Migrations
 {
-    public partial class Segunda : Migration
+    public partial class Terceira : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "TB_Area",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TB_Area", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "TB_Necessidade",
                 columns: table => new
@@ -31,6 +44,30 @@ namespace OBM_Project.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TB_TipoServico", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TB_Contatos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Telefone = table.Column<string>(nullable: false),
+                    AreaId = table.Column<int>(nullable: false),
+                    Assunto = table.Column<string>(nullable: true),
+                    Conteudo = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TB_Contatos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TB_Contatos_TB_Area_AreaId",
+                        column: x => x.AreaId,
+                        principalTable: "TB_Area",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -70,22 +107,27 @@ namespace OBM_Project.Migrations
                     table.ForeignKey(
                         name: "FK_TB_Orcamentos_TB_Necessidade_NecessidadeId",
                         column: x => x.NecessidadeId,
-                        principalTable: "tb_necessidade",
+                        principalTable: "TB_Necessidade",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TB_Orcamentos_TB_SubTipoServico_SubTipoServicoId",
                         column: x => x.SubTipoServicoId,
-                        principalTable: "tb_subtiposervico",
+                        principalTable: "TB_SubTipoServico",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TB_Orcamentos_TB_TipoServico_TipoServicoId",
                         column: x => x.TipoServicoId,
-                        principalTable: "tb_tiposervico",
+                        principalTable: "TB_TipoServico",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TB_Contatos_AreaId",
+                table: "TB_Contatos",
+                column: "AreaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TB_Orcamentos_NecessidadeId",
@@ -111,7 +153,13 @@ namespace OBM_Project.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "TB_Contatos");
+
+            migrationBuilder.DropTable(
                 name: "TB_Orcamentos");
+
+            migrationBuilder.DropTable(
+                name: "TB_Area");
 
             migrationBuilder.DropTable(
                 name: "TB_Necessidade");
