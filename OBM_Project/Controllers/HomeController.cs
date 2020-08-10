@@ -44,6 +44,14 @@ namespace OBM_Project.Controllers
         {
             return View();
         }
+        public IActionResult Parceiros()
+        {
+            return View();
+        }
+        public IActionResult Curriculo()
+        {
+            return Redirect("https://github.com/Everson-Menezes/MVC-Projects_CSharp");
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Login()
