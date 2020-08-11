@@ -25,9 +25,9 @@ namespace OBM_Project.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public IActionResult VincularSubtipo(int objId)
+        public IActionResult VincularSubtipo(int idTipo)
         {
-            var subTipoServicos = _painelControleServices.ListarSubTipoServicosPorTipo(objId);
+            var subTipoServicos = _painelControleServices.ListarSubTipoServicosPorTipo(idTipo);
             return Json(subTipoServicos);
         }
 

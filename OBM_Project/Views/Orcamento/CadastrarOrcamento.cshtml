@@ -17,9 +17,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Subtipo Serviço</label>
-                        <select id="SubTipoServicoId" asp-for="Orcamentos.SubTipoServicoId" asp-items="@(new SelectList(Enumerable.Empty<SelectListItem>(), "Id", "Nome"))" class="form-control">
-                            <option>Selecione uma opção</option>
-                        </select>
+                        @Html.DropDownList("SubTipoServicoId", new SelectList(Enumerable.Empty<SelectListItem>(), "Id", "Nome"), new { @class = "form-control" })
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Qual a urgência do serviço</label>
@@ -52,21 +50,26 @@
             var idTipo = $('#TipoServicoId').val();
 
             if (idTipo > 0) {
-                alert('1');
-                $.post('@Url.Action("VincularSubtipo", "OrcamentoController")', { 'idTipo': idTipo }, function (data) {
-                    alert('2');
-;                    if (data.length > 0) {
+                //console.log('id>0');
+                $.post('@Url.Action("VincularSubtipo", "Orcamento")', {'idTipo': idTipo}, function (data) {
+                   // console.log('post');
+                    ; if (data.length > 0) {
+                     //   console.log('length');
                         $('#SubTipoServicoId').empty();
+                        $('#SubTipoServicoId').append('<option value="' + '">' + 'Selecione' + '</option>');
                         for (var i = 0; i < data.length; i++) {
+                            alert(data);
                             $('#SubTipoServicoId').append('<option value="' + data[i].Id + '">' + data[i].Id.Nome + '</option>');
+                            console.log('Carregou!');
                         }
                     }
                 });
+                //   console.log('fim id>0');
             }
         });
     });
 </script>
-    
+
 @section A{ }
 @section B{ }
 @section C{ }

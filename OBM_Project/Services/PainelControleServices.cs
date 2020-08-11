@@ -24,9 +24,9 @@ namespace OBM_Project.Services
         {
             return _ProjectContext.TB_SubTipoServico.Where(x => ListarTipoServicos().Any(y => y.Id == x.TipoServicoId)).OrderBy(x => x.Nome).ToList();
         }
-        public SubTipoServico ListarSubTipoServicosPorTipo(int objId)
+        public List<SubTipoServico> ListarSubTipoServicosPorTipo(int objId)
         {
-            return _ProjectContext.TB_SubTipoServico.FirstOrDefault(x => x.TipoServicoId == objId);
+            return _ProjectContext.TB_SubTipoServico.Where(x => x.TipoServicoId == objId).ToList();
         }
         public List<Necessidade> ListarNecessidade()
         {
