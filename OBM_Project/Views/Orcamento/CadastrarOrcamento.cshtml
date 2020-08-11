@@ -11,13 +11,13 @@
                 <form asp-action="SolicitarOrcamento" asp-controller="Orcamento">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Tipo Serviço</label>
-                        <select asp-for="Orcamentos.TipoServicoId" asp-items="@(new SelectList(Model.TipoServicos, "Id", "Nome"))" class="form-control">
+                        <select id="TipoServicoId" asp-for="Orcamentos.TipoServicoId" asp-items="@(new SelectList(Model.TipoServicos, "Id", "Nome"))" class="form-control">
                             <option>selecione</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Subtipo Serviço</label>
-                        <select asp-for="Orcamentos.SubTipoServicoId" asp-items="@(new SelectList(Enumerable.Empty<SelectListItem>(), "Id", "Nome"))" class="form-control">
+                        <select id="SubTipoServicoId" asp-for="Orcamentos.SubTipoServicoId" asp-items="@(new SelectList(Enumerable.Empty<SelectListItem>(), "Id", "Nome"))" class="form-control">
                             <option>Selecione uma opção</option>
                         </select>
                     </div>
@@ -46,16 +46,19 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#Orcamentos.TipoServicoId').change(function () {
-            var idTipo = $('#Orcamentos.TipoServicoId').val();
-            alert(idTipo);
+
+        $('#TipoServicoId').change(function () {
+
+            var idTipo = $('#TipoServicoId').val();
+
             if (idTipo > 0) {
+                alert('1');
                 $.post('@Url.Action("VincularSubtipo", "OrcamentoController")', { 'idTipo': idTipo }, function (data) {
-                    console.log('1');
+                    alert('2');
 ;                    if (data.length > 0) {
-                        $('#Orcamentos.SubTipoServicoId').empty();
+                        $('#SubTipoServicoId').empty();
                         for (var i = 0; i < data.length; i++) {
-                            $('#Orcamentos.SubTipoServicoId').append('<option value="' + data[i].Id + '">' + data[i].Id.Nome + '</option>');
+                            $('#SubTipoServicoId').append('<option value="' + data[i].Id + '">' + data[i].Id.Nome + '</option>');
                         }
                     }
                 });
