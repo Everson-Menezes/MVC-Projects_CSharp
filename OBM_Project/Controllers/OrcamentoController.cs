@@ -19,12 +19,18 @@ namespace OBM_Project.Controllers
         public IActionResult CadastrarOrcamento()
         {
             var tipoServico = _painelControleServices.ListarTipoServicos();
-            var subTipoServico = _painelControleServices.ListarSubTipoServicos();
             var necessidade = _painelControleServices.ListarNecessidade();
-            var viewModel = new CadastrarOrcamentoViewModel { TipoServicos = tipoServico, SubTipoServicos = subTipoServico, Necessidades = necessidade };
+            var viewModel = new CadastrarOrcamentoViewModel { TipoServicos = tipoServico, Necessidades = necessidade };
              
             return View(viewModel);
         }
+        [HttpPost]
+        public IActionResult VincularSubtipo(int objId)
+        {
+            var subTipoServicos = _painelControleServices.ListarSubTipoServicosPorTipo(objId);
+            return Json(subTipoServicos);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult SolicitarOrcamento(Orcamentos orcamentos)

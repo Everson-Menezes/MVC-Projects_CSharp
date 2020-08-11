@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Subtipo Serviço</label>
-                        <select asp-for="Orcamentos.SubTipoServicoId" asp-items="@(new SelectList(Model.SubTipoServicos,"Id", "Nome"))" class="form-control">
+                        <select asp-for="Orcamentos.SubTipoServicoId" asp-items="@(new SelectList(Enumerable.Empty<SelectListItem>(), "Id", "Nome"))" class="form-control">
                             <option>Selecione uma opção</option>
                         </select>
                     </div>
@@ -28,7 +28,7 @@
                         </select>
                     </div>
                     <label for="FormControlTextarea">Observações</label>
-                    <div class="form-group" >
+                    <div class="form-group">
                         <textarea asp-for="Orcamentos.Observacao" placeholder="Escreve seu texto aqui!" style="height:120px; width:400px; resize:none" class="form-control"></textarea>
                         <br /><br />
                         <input type="submit" value="Enviar" class="btn btn-default" />
@@ -39,12 +39,31 @@
         <td>
         </td>
         <td>
-            
+            <img src="~/images/WhatsApp Image 2020-08-11 at 08.08.13.jpeg" style="width:720px" />
         </td>
     </tr>
 </table>
 
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Orcamentos.TipoServicoId').change(function () {
+            var idTipo = $('#Orcamentos.TipoServicoId').val();
+            alert(idTipo);
+            if (idTipo > 0) {
+                $.post('@Url.Action("VincularSubtipo", "OrcamentoController")', { 'idTipo': idTipo }, function (data) {
+                    console.log('1');
+;                    if (data.length > 0) {
+                        $('#Orcamentos.SubTipoServicoId').empty();
+                        for (var i = 0; i < data.length; i++) {
+                            $('#Orcamentos.SubTipoServicoId').append('<option value="' + data[i].Id + '">' + data[i].Id.Nome + '</option>');
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+    
 @section A{ }
 @section B{ }
 @section C{ }

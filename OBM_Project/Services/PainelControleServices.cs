@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using OBM_Project.Data;
 using OBM_Project.Models.Orcamento;
@@ -21,7 +22,11 @@ namespace OBM_Project.Services
         }
         public List<SubTipoServico> ListarSubTipoServicos()
         {
-            return _ProjectContext.TB_SubTipoServico.ToList();
+            return _ProjectContext.TB_SubTipoServico.Where(x => ListarTipoServicos().Any(y => y.Id == x.TipoServicoId)).OrderBy(x => x.Nome).ToList();
+        }
+        public SubTipoServico ListarSubTipoServicosPorTipo(int objId)
+        {
+            return _ProjectContext.TB_SubTipoServico.FirstOrDefault(x => x.TipoServicoId == objId);
         }
         public List<Necessidade> ListarNecessidade()
         {
