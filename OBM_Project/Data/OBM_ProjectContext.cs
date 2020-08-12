@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OBM_Project.Models.Contato;
 using OBM_Project.Models.Orcamento;
+using OBM_Project.Models.Usuario;
 
 namespace OBM_Project.Data
 {
@@ -17,6 +18,7 @@ namespace OBM_Project.Data
         public DbSet<Necessidade> TB_Necessidade { get; set; }
         public DbSet<Contatos> TB_Contatos { get; set; }
         public DbSet<Area> TB_Area { get; set; }
+        public DbSet<Usuarios> TB_Usuario { get; set; }
 
     }
 }

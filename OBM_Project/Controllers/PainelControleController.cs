@@ -3,6 +3,7 @@ using OBM_Project.Services;
 using OBM_Project.Models.Orcamento;
 using OBM_Project.Models.ViewModels;
 using OBM_Project.Models.Contato;
+using OBM_Project.Models.Usuario;
 
 namespace OBM_Project.Controllers
 {
@@ -15,10 +16,16 @@ namespace OBM_Project.Controllers
             _painelControleServices = painelControleServices;
             _ContatoServices = contatoServices;
         }
-
-        public IActionResult Index()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(Usuarios obj)
         {
-            return View();
+            if (_painelControleServices.ValidarUsuario(obj))
+            {
+                return View();
+            }
+            //Caixa de dialogo login invalido
+            return RedirectToAction("Index", "Home");
         }
         public IActionResult TipoServico()
         {

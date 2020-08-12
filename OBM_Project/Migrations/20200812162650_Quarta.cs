@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OBM_Project.Migrations
 {
-    public partial class Terceira : Migration
+    public partial class Quarta : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,6 +47,22 @@ namespace OBM_Project.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TB_Usuario",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Login = table.Column<string>(nullable: true),
+                    Senha = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TB_Usuario", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TB_Contatos",
                 columns: table => new
                 {
@@ -54,7 +70,7 @@ namespace OBM_Project.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    Telefone = table.Column<string>(nullable: false),
+                    Telefone = table.Column<string>(nullable: true),
                     AreaId = table.Column<int>(nullable: false),
                     Assunto = table.Column<string>(nullable: true),
                     Conteudo = table.Column<string>(nullable: true)
@@ -157,6 +173,9 @@ namespace OBM_Project.Migrations
 
             migrationBuilder.DropTable(
                 name: "TB_Orcamentos");
+
+            migrationBuilder.DropTable(
+                name: "TB_Usuario");
 
             migrationBuilder.DropTable(
                 name: "TB_Area");

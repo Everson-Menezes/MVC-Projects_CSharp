@@ -52,13 +52,7 @@ namespace OBM_Project.Controllers
         {
             return Redirect("https://github.com/Everson-Menezes/MVC-Projects_CSharp");
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Login()
-        {
-            //logica para validar login
-            return RedirectToAction("Index", "PainelControle");
-        }
+       
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

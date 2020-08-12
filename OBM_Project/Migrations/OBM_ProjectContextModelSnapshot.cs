@@ -116,6 +116,24 @@ namespace OBM_Project.Migrations
                     b.ToTable("TB_TipoServico");
                 });
 
+            modelBuilder.Entity("OBM_Project.Models.Usuario.Usuarios", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Login");
+
+                    b.Property<string>("Nome");
+
+                    b.Property<string>("Senha");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TB_Usuario");
+                });
+
             modelBuilder.Entity("OBM_Project.Models.Contato.Contatos", b =>
                 {
                     b.HasOne("OBM_Project.Models.Contato.Area", "Area")

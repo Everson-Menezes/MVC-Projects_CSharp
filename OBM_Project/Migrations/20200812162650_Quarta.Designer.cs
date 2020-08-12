@@ -8,8 +8,8 @@ using OBM_Project.Data;
 namespace OBM_Project.Migrations
 {
     [DbContext(typeof(OBM_ProjectContext))]
-    [Migration("20200810143614_Terceira")]
-    partial class Terceira
+    [Migration("20200812162650_Quarta")]
+    partial class Quarta
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -116,6 +116,24 @@ namespace OBM_Project.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TB_TipoServico");
+                });
+
+            modelBuilder.Entity("OBM_Project.Models.Usuario.Usuarios", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Login");
+
+                    b.Property<string>("Nome");
+
+                    b.Property<string>("Senha");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TB_Usuario");
                 });
 
             modelBuilder.Entity("OBM_Project.Models.Contato.Contatos", b =>
