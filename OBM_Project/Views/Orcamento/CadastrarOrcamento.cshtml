@@ -17,7 +17,10 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Subtipo Serviço</label>
-                        @Html.DropDownList("SubTipoServicoId", new SelectList(Enumerable.Empty<SelectListItem>(), "Id", "Nome"), new { @class = "form-control" })
+                        <select id="SubTipoServicoId" asp-for="Orcamentos.SubTipoServicoId" asp-items="@(new SelectList(Enumerable.Empty<SelectListItem>(), "Id", "Nome"))" class="form-control">
+                        
+                        </select>
+                      
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Qual a urgência do serviço</label>
@@ -50,19 +53,18 @@
             var idTipo = $('#TipoServicoId').val();
 
             if (idTipo > 0) {
-                //console.log('id>0');
-                $.post('@Url.Action("VincularSubtipo", "Orcamento")', {'idTipo': idTipo}, function (data) {
-                   // console.log('post');
-                    ; if (data.length > 0) {
-                     //   console.log('length');
-                        $('#SubTipoServicoId').empty();
+                $('#SubTipoServicoId').empty();
+                $.post('@Url.Action("VincularSubtipo", "Orcamento")', { 'idTipo': idTipo }, function (data) {
+
                         $('#SubTipoServicoId').append('<option value="' + '">' + 'Selecione' + '</option>');
-                        for (var i = 0; i < data.length; i++) {
-                            alert(data);
-                            $('#SubTipoServicoId').append('<option value="' + data[i].Id + '">' + data[i].Id.Nome + '</option>');
-                            console.log('Carregou!');
+                        for (x in data) {
+
+                            if (data.length > 0) {
+                                $('#SubTipoServicoId').append('<option value="' + data[x].id + '">' + data[x].nome + '</option>');
+                                console.log('Carregou!');
+
+                            }
                         }
-                    }
                 });
                 //   console.log('fim id>0');
             }

@@ -28,6 +28,7 @@ namespace OBM_Project.Controllers
         public IActionResult VincularSubtipo(int idTipo)
         {
             var subTipoServicos = _painelControleServices.ListarSubTipoServicosPorTipo(idTipo);
+
             return Json(subTipoServicos);
         }
 
