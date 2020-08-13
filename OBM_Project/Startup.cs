@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using OBM_Project.Data;
 using OBM_Project.Services;
+using System;
 
 namespace OBM_Project
 {
@@ -28,12 +29,19 @@ namespace OBM_Project
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddDistributedMemoryCache();
 
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<OBM_ProjectContext>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("OBM_ProjectContext"),builder => builder.MigrationsAssembly("OBM_Project")));
+                    options.UseMySql(Configuration.GetConnectionString("OBM_ProjectContext"), builder => builder.MigrationsAssembly("OBM_Project")));
             services.AddScoped<SeedingServices>();
             services.AddScoped<PainelControleServices>();
             services.AddScoped<ContatoServices>();
@@ -57,12 +65,14 @@ namespace OBM_Project
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }
