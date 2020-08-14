@@ -8,7 +8,7 @@
     <tr>
         <td style="width:320px">
             <div>
-                <form asp-action="Solicitar" asp-controller="Orcamento">
+                <form id="Solicitar" asp-action="Solicitar" asp-controller="Orcamento">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Tipo Serviço</label>
                         <select id="TipoServicoId" asp-for="Orcamentos.TipoServicoId" asp-items="@(new SelectList(Model.TipoServicos, "Id", "Nome"))" class="form-control">
@@ -31,9 +31,11 @@
                     <div class="form-group">
                         <textarea asp-for="Orcamentos.Observacao" placeholder="Escreve seu texto aqui!" style="height:120px; width:400px; resize:none" class="form-control"></textarea>
                         <br /><br />
-                        <input type="submit" value="Enviar" class="btn btn-default" />
                     </div>
                 </form>
+                <button type="button" class="btn btn-default" id="Mensagem" data-toggle="modal" data-target="#exampleModalCenter">
+                    Enviar
+                </button>
             </div>
         </td>
         <td>
@@ -43,15 +45,35 @@
             <form asp-action="Visualizar" asp-controller="Orcamento" style="width:240px">
                 <div class="form-group">
                     <input asp-for="Orcamentos.Id" class="form-control" placeholder="Insira o número do orçamento" />
-                    <input type="submit" value="Vizualizar Orçamento" class="btn btn-default" />
+                    <input id="Solicitar" type="submit" value="Vizualizar Orçamento" class="btn btn-default" />
                 </div>
             </form>
->
             <br />
+            
             <img src="~/images/WhatsApp Image 2020-08-11 at 08.08.13.jpeg" style="width:720px" />
         </td>
     </tr>
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Orçamento recebido</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Em até 60 minutos seu orçamento estará disponível para visualização!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Enviar();">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -78,11 +100,15 @@
             }
         });
     });
+
+    function Enviar() {
+        document.getElementById('Solicitar').submit();
+    }
 </script>
 
 @section A
 {
-    
+
 }
 @section B{ }
 @section C

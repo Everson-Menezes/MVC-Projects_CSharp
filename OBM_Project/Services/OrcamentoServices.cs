@@ -45,9 +45,10 @@ namespace OBM_Project.Services
         {
 
         }
-        public void SolicitarOrcamento(Orcamentos orcamentos)
+        public Orcamentos SolicitarOrcamento()
         {
-
+            var retorno = _ProjectContext.TB_Orcamentos.Last();
+            return retorno;
         }
         public Orcamentos VisualizarOrcamento(Orcamentos orcamentos)
         {
