@@ -8,7 +8,7 @@
     <tr>
         <td style="width:320px">
             <div>
-                <form asp-action="SolicitarOrcamento" asp-controller="Orcamento">
+                <form asp-action="Solicitar" asp-controller="Orcamento">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Tipo Serviço</label>
                         <select id="TipoServicoId" asp-for="Orcamentos.TipoServicoId" asp-items="@(new SelectList(Model.TipoServicos, "Id", "Nome"))" class="form-control">
@@ -38,7 +38,16 @@
         </td>
         <td>
         </td>
-        <td>
+        <td style="align-content:flex-end" class="col-md-pull-10">
+            <h3>Visualizar</h3>
+            <form asp-action="Visualizar" asp-controller="Orcamento" style="width:240px">
+                <div class="form-group">
+                    <input asp-for="Orcamentos.Id" class="form-control" placeholder="Insira o número do orçamento" />
+                    <input type="submit" value="Vizualizar Orçamento" class="btn btn-default" />
+                </div>
+            </form>
+>
+            <br />
             <img src="~/images/WhatsApp Image 2020-08-11 at 08.08.13.jpeg" style="width:720px" />
         </td>
     </tr>
@@ -71,9 +80,15 @@
     });
 </script>
 
-@section A{ }
+@section A
+{
+    
+}
 @section B{ }
-@section C{ }
+@section C
+{
+
+}
 @section D{ }
 
 @section F{ }

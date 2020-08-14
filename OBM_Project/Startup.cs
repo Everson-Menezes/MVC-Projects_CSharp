@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using OBM_Project.Data;
 using OBM_Project.Services;
 using System;
+using Rotativa.AspNetCore;
 
 namespace OBM_Project
 {
@@ -45,6 +46,7 @@ namespace OBM_Project
             services.AddScoped<SeedingServices>();
             services.AddScoped<PainelControleServices>();
             services.AddScoped<ContatoServices>();
+            services.AddScoped<OrcamentoServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,7 +74,7 @@ namespace OBM_Project
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
+            RotativaConfiguration.Setup(env);
         }
     }
 }

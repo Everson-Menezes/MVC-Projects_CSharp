@@ -1,0 +1,68 @@
+﻿@model OBM_Project.Models.Orcamento.Orcamentos
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>Seu orçamento</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoServicoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTipoServicoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NecessidadeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observacao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.TipoServicoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.SubTipoServicoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.NecessidadeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Observacao)
+            </td>
+        </tr>
+
+    </tbody>
+
+    <form asp-action="Imprimir" asp-controller="Orcamento" style="width:240px">
+        <div class="form-group">
+            
+            <input type="submit" value="Imprimir Orçamento" class="btn btn-default" />
+        </div>
+    </form>
+</table>
+@section A{ }
+@section B{ }
+@section C{ }
+@section D{ }
+
+@section F{ }
+@section G{ }
+@section H{ }
+
+@section I{ }
