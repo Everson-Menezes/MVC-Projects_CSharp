@@ -5,6 +5,7 @@ using OBM_Project.Models.Orcamento;
 using OBM_Project.Models.ViewModels;
 using OBM_Project.Services;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Newtonsoft.Json;
 
 namespace OBM_Project.Controllers
 {
@@ -41,12 +42,14 @@ namespace OBM_Project.Controllers
         public IActionResult Visualizar(Orcamentos orcamentos)
         {
             var obj = _orcamentoServices.VisualizarOrcamento(orcamentos);
+            TempData["Orcamento"] = JsonConvert.SerializeObject(obj);
             return View(obj);
         }
         public IActionResult Imprimir(Orcamentos orcamentos)
         {
             _orcamentoServices.ImprimirOrcamento(orcamentos);
-            return Content("Orçamento enviado com sucesso.");
+            var obj = JsonConvert.DeserializeObject<Orcamentos>((string)TempData["Orcamento"]);
+            return new ViewAsPdf("Visualizar", obj);
         }
 
     }

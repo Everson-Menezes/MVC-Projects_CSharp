@@ -2,27 +2,31 @@
 
 @{
     ViewData["Title"] = "View";
+    TempData.Keep();
+    var obj = TempData["Orcamento"];
 }
 
-<h2>Seu orçamento</h2>
+<div class="col-lg-4">
+    <h2>Seu orçamento</h2>
+</div>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                N° Orçamento
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipoServicoId)
+                @Html.DisplayNameFor(model => model.TipoServico)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SubTipoServicoId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NecessidadeId)
+                @Html.DisplayNameFor(model => model.SubTipoServico)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Observacao)
+            </th>
+            <th>
+                Valor Orçado
             </th>
             <th></th>
         </tr>
@@ -34,34 +38,32 @@
                 @Html.DisplayFor(modelItem => modelItem.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => modelItem.TipoServicoId)
+                @Html.DisplayFor(modelItem => modelItem.TipoServico.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => modelItem.SubTipoServicoId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => modelItem.NecessidadeId)
+                @Html.DisplayFor(modelItem => modelItem.SubTipoServico.Nome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => modelItem.Observacao)
             </td>
+            <td>
+                R$100,00
+            </td>
         </tr>
-
     </tbody>
-
-    <form asp-action="Imprimir" asp-controller="Orcamento" style="width:240px">
-        <div class="form-group">
-            
-            <input type="submit" value="Imprimir Orçamento" class="btn btn-default" />
-        </div>
-    </form>
 </table>
 @section A{ }
 @section B{ }
-@section C{ }
+@section C
+{
+    <a class="btn btn-default" asp-action="Imprimir" asp-controller="Orcamento" style="width:240px">Imprimir Orçamento</a>
+}
 @section D{ }
 
-@section F{ }
+@section F
+{
+    <img src="~/images/WhatsApp Image 2020-08-11 at 08.08.13.jpeg" class="img-responsive" style="width:260px; height:100px" />
+}
 @section G{ }
 @section H{ }
 

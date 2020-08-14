@@ -2,6 +2,7 @@
 using OBM_Project.Models.Orcamento;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace OBM_Project.Services
 {
@@ -50,8 +51,13 @@ namespace OBM_Project.Services
         }
         public Orcamentos VisualizarOrcamento(Orcamentos orcamentos)
         {
-            Orcamentos obj = _ProjectContext.TB_Orcamentos.Where(x => orcamentos.Id == x.Id).FirstOrDefault();
-            return obj;
+            var resultado = ListarOrcamentos().Where(x => orcamentos.Id == x.Id).FirstOrDefault();
+            TipoServico tipoServico = _ProjectContext.TB_TipoServico.Where(x => resultado.TipoServicoId == x.Id).FirstOrDefault();
+            SubTipoServico subTipo = _ProjectContext.TB_SubTipoServico.Where(x => resultado.SubTipoServicoId == x.Id).FirstOrDefault();
+            resultado.SubTipoServico.Nome = subTipo.Nome;
+            resultado.TipoServico.Nome = tipoServico.Nome;
+            
+            return resultado;
         }
         
     }
