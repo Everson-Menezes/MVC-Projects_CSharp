@@ -6,6 +6,8 @@ using OBM_Project.Models.Contato;
 using OBM_Project.Models.Usuario;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using OBM_Project.Models.Cliente;
+using OBM_Project.Models.Demanda;
 
 namespace OBM_Project.Controllers
 {
@@ -89,6 +91,37 @@ namespace OBM_Project.Controllers
         {
             return View();
         }
-      
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AdicionarCliente(Clientes clientes)
+        {
+            _painelControleServices.AdicionarCliente(clientes);
+
+            return RedirectToAction("Retorno");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AdicionarDemanda(Demanda demanda)
+        {
+            _painelControleServices.AdicionarDemanda(demanda);
+
+            return RedirectToAction("Retorno");
+        }
+        public IActionResult Demanda()
+        {
+            return View();
+        }
+        public IActionResult Cliente()
+        {
+            return View();
+        }
+        public IActionResult CreateDemanda()
+        {
+            return View();
+        }
+        public IActionResult CreateCliente()
+        {
+            return View();
+        }
     }
 }

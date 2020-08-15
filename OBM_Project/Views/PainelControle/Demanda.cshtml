@@ -1,0 +1,68 @@
+﻿@model IEnumerable<OBM_Project.Models.Demanda.Demanda>
+
+<p>
+    <a asp-action="CreateDemanda" class="btn btn-default">Novo Demanda</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orcamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataAbertura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataTermino)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cliente.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Orcamento.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Valor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataAbertura)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataTermino)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+</table>
+
+@section A{ }
+@section B{ }
+@section C{ }
+@section D{ }
+
+@section F{ }
+@section G{ }
+@section H{ }
+
+@section I{ }

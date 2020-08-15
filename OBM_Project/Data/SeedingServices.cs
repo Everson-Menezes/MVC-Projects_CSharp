@@ -12,7 +12,7 @@ namespace OBM_Project.Data
         }
         public void Seed()
         {
-            if (_ProjectContext.TB_TipoServico.Any() || _ProjectContext.TB_SubTipoServico.Any() || _ProjectContext.TB_Orcamentos.Any() || _ProjectContext.TB_Necessidade.Any() || _ProjectContext.TB_Area.Any() || _ProjectContext.TB_Contatos.Any())
+            if (_ProjectContext.TB_TipoServico.Any() || _ProjectContext.TB_SubTipoServico.Any() || _ProjectContext.TB_Orcamentos.Any() || _ProjectContext.TB_Necessidade.Any() || _ProjectContext.TB_Area.Any() || _ProjectContext.TB_Contatos.Any() || _ProjectContext.TB_Clientes.Any() || _ProjectContext.TB_Demanda.Any() || _ProjectContext.TB_Usuario.Any())
             {
                 return; 
             }
@@ -24,6 +24,9 @@ namespace OBM_Project.Data
                 _ProjectContext.TB_Orcamentos.AddRange();
                 _ProjectContext.TB_Contatos.AddRange();
                 _ProjectContext.TB_Area.AddRange();
+                _ProjectContext.TB_Clientes.AddRange();
+                _ProjectContext.TB_Demanda.AddRange();
+                _ProjectContext.TB_Usuario.AddRange();
             }
             _ProjectContext.SaveChanges();
         }

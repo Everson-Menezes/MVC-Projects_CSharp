@@ -1,4 +1,6 @@
-﻿namespace OBM_Project.Models.Orcamento
+﻿using System;
+
+namespace OBM_Project.Models.Orcamento
 {
     public class Orcamentos
     {
@@ -10,6 +12,7 @@
         public Necessidade Necesssidade { get; set; }
         public int NecessidadeId { get; set; }
         public string Observacao { get; set; }
+        public DateTime DataGeracao { get; set; }
         public Orcamentos()
         {
 
@@ -22,6 +25,7 @@
             SubTipoServico = subTipoServico;
             Necesssidade = necesssidade;
             Observacao = observacao;
+            DataGeracao = DateTime.Now;
         }
     }
 }

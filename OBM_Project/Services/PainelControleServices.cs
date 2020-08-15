@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using OBM_Project.Data;
+using OBM_Project.Models.Cliente;
+using OBM_Project.Models.Demanda;
 using OBM_Project.Models.Orcamento;
 using OBM_Project.Models.Usuario;
 
@@ -18,6 +20,11 @@ namespace OBM_Project.Services
         public List<Usuarios> ListarUsuarios()
         {
             return _ProjectContext.TB_Usuario.ToList();
+        }
+
+        public List<TipoServico> ListarTipoServicos()
+        {
+            return _ProjectContext.TB_TipoServico.OrderBy(x => x.Nome).ToList();
         }
         public bool ValidarUsuario(Usuarios obj)
         {
@@ -53,9 +60,16 @@ namespace OBM_Project.Services
             _ProjectContext.Add(obj);
             _ProjectContext.SaveChanges();
         }
-        public List<TipoServico> ListarTipoServicos()
+        public void AdicionarCliente(Clientes obj)
         {
-            return _ProjectContext.TB_TipoServico.OrderBy(x => x.Nome).ToList();
+            _ProjectContext.Add(obj);
+            _ProjectContext.SaveChanges();
         }
+        public void AdicionarDemanda(Demanda obj)
+        {
+            _ProjectContext.Add(obj);
+            _ProjectContext.SaveChanges();
+        }
+
     }
 }
