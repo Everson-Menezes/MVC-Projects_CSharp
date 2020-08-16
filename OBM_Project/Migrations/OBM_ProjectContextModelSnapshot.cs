@@ -122,6 +122,8 @@ namespace OBM_Project.Migrations
 
                     b.Property<int>("TipoServicoId");
 
+                    b.Property<double>("Valor");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NecessidadeId");

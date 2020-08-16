@@ -45,9 +45,8 @@ namespace OBM_Project.Controllers
             TempData["Orcamento"] = JsonConvert.SerializeObject(obj);
             return View(obj);
         }
-        public IActionResult Imprimir(Orcamentos orcamentos)
+        public IActionResult Imprimir()
         {
-            _orcamentoServices.ImprimirOrcamento(orcamentos);
             var obj = JsonConvert.DeserializeObject<Orcamentos>((string)TempData["Orcamento"]);
             return new ViewAsPdf("Visualizar", obj);
         }

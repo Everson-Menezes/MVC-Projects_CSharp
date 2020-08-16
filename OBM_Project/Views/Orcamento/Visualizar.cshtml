@@ -43,11 +43,11 @@
             <td>
                 @Html.DisplayFor(modelItem => modelItem.SubTipoServico.Nome)
             </td>
-            <td>
+            <td style=" width:300px">
                 @Html.DisplayFor(modelItem => modelItem.Observacao)
             </td>
             <td>
-                R$100,00
+                @Html.DisplayFor(modelItem => modelItem.Valor)
             </td>
         </tr>
     </tbody>

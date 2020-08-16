@@ -13,6 +13,7 @@ namespace OBM_Project.Models.Orcamento
         public int NecessidadeId { get; set; }
         public string Observacao { get; set; }
         public DateTime DataGeracao { get; set; }
+        public double Valor { get; set; }
         public Orcamentos()
         {
 

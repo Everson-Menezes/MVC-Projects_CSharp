@@ -9,7 +9,7 @@ using OBM_Project.Data;
 namespace OBM_Project.Migrations
 {
     [DbContext(typeof(OBM_ProjectContext))]
-    [Migration("20200814235249_Quinta")]
+    [Migration("20200816213842_Quinta")]
     partial class Quinta
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,6 +123,8 @@ namespace OBM_Project.Migrations
                     b.Property<int>("SubTipoServicoId");
 
                     b.Property<int>("TipoServicoId");
+
+                    b.Property<double>("Valor");
 
                     b.HasKey("Id");
 

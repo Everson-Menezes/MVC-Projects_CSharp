@@ -133,7 +133,8 @@ namespace OBM_Project.Migrations
                     SubTipoServicoId = table.Column<int>(nullable: false),
                     NecessidadeId = table.Column<int>(nullable: false),
                     Observacao = table.Column<string>(nullable: true),
-                    DataGeracao = table.Column<DateTime>(nullable: false)
+                    DataGeracao = table.Column<DateTime>(nullable: false),
+                    Valor = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
