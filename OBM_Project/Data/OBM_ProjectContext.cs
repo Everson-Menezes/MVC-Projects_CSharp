@@ -22,7 +22,7 @@ namespace OBM_Project.Data
         public DbSet<Area> TB_Area { get; set; }
         public DbSet<Usuarios> TB_Usuario { get; set; }
         public DbSet<Clientes> TB_Clientes { get; set; }
-        public DbSet<Demanda> TB_Demanda { get; set; }
+        public DbSet<Demandas> TB_Demanda { get; set; }
 
 
     }

@@ -65,10 +65,14 @@ namespace OBM_Project.Services
             _ProjectContext.Add(obj);
             _ProjectContext.SaveChanges();
         }
-        public void AdicionarDemanda(Demanda obj)
+        public void AdicionarDemanda(Demandas obj)
         {
             _ProjectContext.Add(obj);
             _ProjectContext.SaveChanges();
+        }
+        public List<Clientes> ListarClientes()
+        {
+           return _ProjectContext.TB_Clientes.OrderBy(x => x.Nome).ToList();
         }
 
     }

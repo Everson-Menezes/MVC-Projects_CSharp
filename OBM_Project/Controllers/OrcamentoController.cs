@@ -51,6 +51,12 @@ namespace OBM_Project.Controllers
             var obj = JsonConvert.DeserializeObject<Orcamentos>((string)TempData["Orcamento"]);
             return new ViewAsPdf("Visualizar", obj);
         }
-        
+        [HttpPost]
+        public IActionResult FindOrcamento(int id)
+        {
+            Orcamentos orcamento = _orcamentoServices.FindById(id);
+            return Json(orcamento);
+        }
+
     }
 }

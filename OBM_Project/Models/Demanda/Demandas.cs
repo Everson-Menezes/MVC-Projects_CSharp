@@ -5,7 +5,7 @@ using System;
 
 namespace OBM_Project.Models.Demanda
 {
-    public class Demanda
+    public class Demandas
     {
         public int Id { get; set; }
         public Clientes Cliente { get; set; }
@@ -15,12 +15,12 @@ namespace OBM_Project.Models.Demanda
         public double Valor { get; set; }
         public DateTime DataAbertura { get; set; }
         public DateTime DataTermino { get; set; }
-        public Demanda()
+        public Demandas()
         {
 
         }
 
-        public Demanda(int id, Clientes cliente, Orcamentos orcamento)
+        public Demandas(int id, Clientes cliente, Orcamentos orcamento)
         {
             Id = id;
             Cliente = cliente;

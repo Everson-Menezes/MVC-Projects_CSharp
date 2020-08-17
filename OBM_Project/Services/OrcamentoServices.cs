@@ -67,6 +67,11 @@ namespace OBM_Project.Services
             
             return resultado;
         }
+        public Orcamentos FindById(int id)
+        {
+            Orcamentos retorno = _ProjectContext.TB_Orcamentos.AsEnumerable().Where(x => id == x.Id).FirstOrDefault();
+            return retorno;
+        }
         
     }
 }

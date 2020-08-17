@@ -14,13 +14,15 @@ namespace OBM_Project.Controllers
     public class PainelControleController : Controller
     {
         private readonly PainelControleServices _painelControleServices;
-        private readonly ContatoServices _ContatoServices;
-        public PainelControleController (PainelControleServices painelControleServices, ContatoServices contatoServices)
+        private readonly ContatoServices _contatoServices;
+        private readonly OrcamentoServices _orcamentoServices;
+        public PainelControleController(PainelControleServices painelControleServices, ContatoServices contatoServices, OrcamentoServices orcamentoServices)
         {
             _painelControleServices = painelControleServices;
-            _ContatoServices = contatoServices;
+            _contatoServices = contatoServices;
+            _orcamentoServices = orcamentoServices;
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Index(Usuarios obj)
@@ -57,7 +59,7 @@ namespace OBM_Project.Controllers
         {
             //var obj = JsonConvert.DeserializeObject<Usuarios>((string)TempData["Usuario"]);
             _painelControleServices.AdicionarTipoServico(tipoServico);
-            
+
             return RedirectToAction("Retorno");
         }
         public IActionResult SubTipoServico()
@@ -84,7 +86,7 @@ namespace OBM_Project.Controllers
         }
         public IActionResult AdicionarArea(Area area)
         {
-            _ContatoServices.AdicionarArea(area);
+            _contatoServices.AdicionarArea(area);
             return RedirectToAction("Retorno");
         }
         public IActionResult Area()
@@ -101,7 +103,7 @@ namespace OBM_Project.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AdicionarDemanda(Demanda demanda)
+        public IActionResult AdicionarDemanda(Demandas demanda)
         {
             _painelControleServices.AdicionarDemanda(demanda);
 
@@ -117,7 +119,10 @@ namespace OBM_Project.Controllers
         }
         public IActionResult CreateDemanda()
         {
-            return View();
+            var clientes = _painelControleServices.ListarClientes();
+            var orcamentos = _orcamentoServices.ListarOrcamentos();
+            var viewModel = new DemandaViewModel { Orcamento = orcamentos, Cliente = clientes };
+            return View(viewModel);
         }
         public IActionResult CreateCliente()
         {
