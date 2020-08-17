@@ -14,12 +14,19 @@
             </div>
             <div class="form-group">
                 <label for="Nome" class="control-label">Nome do cliente</label>
-                <input id="Demanda.Cliente.Nome" asp-for="Demanda.Cliente.Nome" class="form-control" />
+                <input id="DmClienteNome" asp-for="Demanda.Cliente.Nome" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Tipo de Servico" class="control-label"> Tipo de Servço</label>
+                <input id="DmOrTipoServ" asp-for="Demanda.Orcamento.TipoServico" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label forr="SubTipo Servico" class="control-label">SubTipo de Serviço</label>
+                <input id="DmOrSubTipoServ" asp-for="Demanda.Orcamento.SubTipoServico" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Demanda.Valor" class="control-label"></label>
-                <input id="Demanda.Valor" asp-for="Demanda.Valor" class="form-control" />
-
+                <input id="DmOrValor" asp-for="Demanda.Valor" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Demanda.DataAbertura" class="control-label"></label>
@@ -48,23 +55,19 @@ $(document).ready(function () {
     $('#DmOrId').change(function () {
 
         var idDemanda = $('#DmOrId').val();
-        console.log('Carregou demanda');
-        alert(idDemanda);
-        if (idDemanda > 0) {
-                $('#Demanda.Cliente.Nome').empty();
-                    $.post('@Url.Action("FindOrcamento", "Orcamento")', { 'idDemanda': idDemanda }, function (data) {
-                        console.log('post');
-                        for (x in data) {
+            
+                if (idDemanda > 0) {
+                    $('#DmClienteNome').empty();
 
-                            if (data.length > 0) {
-                                $('#Demanda.Valor').append('<input value="' + '">' + data[x].valor + '/>');
-                                    console.log('Carregou!');
+                        $.post('@Url.Action("FindOrcamento", "Orcamento")', { idDemanda : idDemanda }, function (data) {
 
-                            }
-                        }
-                    });
-                        console.log('fim id>0');
-            }
+                            $('#DmOrTipoServ').val(data.TipoServico.Nome);
+                            $('#DmOrSubTipoServ').val(data.SubTipoServico.Nome);
+                            $('#DmOrValor').val(data.valor);
+                            
+
+                        });
+                }
     });
 });
 </script>
