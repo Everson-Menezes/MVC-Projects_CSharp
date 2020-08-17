@@ -9,7 +9,7 @@ using OBM_Project.Data;
 namespace OBM_Project.Migrations
 {
     [DbContext(typeof(OBM_ProjectContext))]
-    [Migration("20200816213842_Quinta")]
+    [Migration("20200817130232_Quinta")]
     partial class Quinta
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -37,7 +37,8 @@ namespace OBM_Project.Controllers
         public IActionResult Solicitar(Orcamentos orcamentos)
         {
             _orcamentoServices.AdicionarOrcamento(orcamentos);
-            return Content("Orçamento enviado com sucesso.");
+            Orcamentos ultimo = _orcamentoServices.SolicitarOrcamento();
+            return Content("Seu orçamento gerou a numeração: " + ultimo.Id );
         }
         public IActionResult Visualizar(Orcamentos orcamentos)
         {
@@ -50,11 +51,6 @@ namespace OBM_Project.Controllers
             var obj = JsonConvert.DeserializeObject<Orcamentos>((string)TempData["Orcamento"]);
             return new ViewAsPdf("Visualizar", obj);
         }
-        public IActionResult NumeroOrcamento()
-        {
-            Orcamentos ultimo = _orcamentoServices.SolicitarOrcamento();
-            return Json(ultimo);
-        }
-
+        
     }
 }
