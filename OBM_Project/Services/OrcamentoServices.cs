@@ -69,6 +69,8 @@ namespace OBM_Project.Services
         }
         public Orcamentos FindById(int id)
         {
+            //fazer join orçamentos, necessidade, tipo serviço e subtipo
+            
             Orcamentos retorno = _ProjectContext.TB_Orcamentos.AsEnumerable().Where(x => id == x.Id).FirstOrDefault();
             return retorno;
         }

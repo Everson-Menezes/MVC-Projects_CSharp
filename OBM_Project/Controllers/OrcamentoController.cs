@@ -52,9 +52,9 @@ namespace OBM_Project.Controllers
             return new ViewAsPdf("Visualizar", obj);
         }
         [HttpPost]
-        public IActionResult FindOrcamento(int id)
+        public IActionResult FindOrcamento(int idDemanda)
         {
-            Orcamentos orcamento = _orcamentoServices.FindById(id);
+            Orcamentos orcamento = _orcamentoServices.FindById(idDemanda);
             return Json(orcamento);
         }
 

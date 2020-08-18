@@ -85,7 +85,7 @@
             if (idTipo > 0) {
                 $('#SubTipoServicoId').empty();
                 $.post('@Url.Action("VincularSubtipo", "Orcamento")', { 'idTipo': idTipo }, function (data) {
-
+                    
                         $('#SubTipoServicoId').append('<option value="' + '">' + 'Selecione' + '</option>');
                         for (x in data) {
 
