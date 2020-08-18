@@ -4,7 +4,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AdicionarDemanda">
+        <form>
             <div class="text-danger"></div>
             <div class="form-group">
                 <label for="Orcamento" class="control-label">Número do Orçamento</label>
@@ -14,15 +14,19 @@
             </div>
             <div class="form-group">
                 <label for="Nome" class="control-label">Nome do cliente</label>
-                <input id="DmClienteNome" asp-for="Demanda.Cliente.Nome" class="form-control" />
+                <input id="DmClienteNome" value="" asp-for="Demanda.Cliente.Nome" class="form-control" />
             </div>
             <div class="form-group">
-                <label for="Tipo de Servico" class="control-label"> Tipo de Servço</label>
-                <input id="DmOrTipoServ" asp-for="Demanda.Orcamento.TipoServico" class="form-control" />
+                <label for="Tipo de Servico" class="control-label"> Tipo de serviço</label>
+                <input id="DmOrTipoServ" value="" asp-for="Demanda.Orcamento.TipoServico.Nome" class="form-control" />
             </div>
             <div class="form-group">
-                <label forr="SubTipo Servico" class="control-label">SubTipo de Serviço</label>
-                <input id="DmOrSubTipoServ" asp-for="Demanda.Orcamento.SubTipoServico" class="form-control" />
+                <label forr="SubTipo Servico" class="control-label">SubTipo de serviço</label>
+                <input id="DmOrSubTipoServ" value="" asp-for="Demanda.Orcamento.SubTipoServico.Nome" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Necessidade" class="control-label">Necessidade do serviço</label>
+                <input id="DmNecessidade" value="" asp-for="Demanda.Orcamento.Necessidade.Nome" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Demanda.Valor" class="control-label"></label>
@@ -30,19 +34,60 @@
             </div>
             <div class="form-group">
                 <label asp-for="Demanda.DataAbertura" class="control-label"></label>
-                <input asp-for="Demanda.DataAbertura" class="form-control" />
-                <span asp-validation-for="Demanda.DataAbertura" class="text-danger"></span>
+                <input type="date" asp-for="Demanda.DataAbertura" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Demanda.DataTermino" class="control-label"></label>
-                <input asp-for="Demanda.DataTermino" class="form-control" />
+                <input type="date" asp-for="Demanda.DataTermino" class="form-control" />
 
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="button" class="btn btn-secondary" onclick="Enviar();">Adicionar</button>
             </div>
         </form>
     </div>
+</div>
+
+<div hidden="hidden">
+    <form id="Formulario" asp-action="AdicionarDemanda" asp-controller="PainelControle">
+        <div class="text-danger"></div>
+        <div class="form-group">
+            <label for="Orcamento" class="control-label">Número do Orçamento</label>
+            <select id="DmOrId" asp-for="Demanda.OrcamentoId" asp-items="@(new SelectList(Model.Orcamento, "Id", "Id"))" class="form-control">
+                <option>selecione</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Nome" class="control-label">Nome do cliente</label>
+            <input id="DmClienteId" value="" asp-for="Demanda.ClienteId" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="Tipo de Servico" class="control-label"> Tipo de serviço</label>
+            <input id="DmOrTipoServId" value="" asp-for="Demanda.Orcamento.TipoServicoId" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label forr="SubTipo Servico" class="control-label">SubTipo de serviço</label>
+            <input id="DmOrSubTipoServId" value="" asp-for="Demanda.Orcamento.SubTipoServicoId" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="Necessidade" class="control-label">Necessidade do serviço</label>
+            <input id="DmNecessidadeId" value="" asp-for="Demanda.Orcamento.NecessidadeId" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Demanda.Valor" class="control-label"></label>
+            <input id="DmOrValorId" asp-for="Demanda.Valor" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Demanda.DataAbertura" class="control-label"></label>
+            <input type="date" asp-for="Demanda.DataAbertura" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Demanda.DataTermino" class="control-label"></label>
+            <input type="date" asp-for="Demanda.DataTermino" class="form-control" />
+
+        </div>
+        
+    </form>
 </div>
 
 <div>
@@ -52,24 +97,54 @@
 <script type="text/javascript">
 $(document).ready(function () {
 
-    $('#DmOrId').change(function () {
+        $('#DmOrId').change(function () {
 
-        var idDemanda = $('#DmOrId').val();
-            
-                if (idDemanda > 0) {
-                    $('#DmClienteNome').empty();
+            var idDemanda = $('#DmOrId').val();
 
-                        $.post('@Url.Action("FindOrcamento", "Orcamento")', { idDemanda : idDemanda }, function (data) {
+                    if (idDemanda > 0) {
+                        $('#DmClienteNome').empty();
+                        $('#DmOrValor').empty();
+                        $('#DmOrTipoServ').empty();
+                        $('#DmOrSubTipoServ').empty();
+                        $('#DmNecessidade').empty();
 
-                            $('#DmOrTipoServ').val(data.TipoServico.Nome);
-                            $('#DmOrSubTipoServ').val(data.SubTipoServico.Nome);
+                        $('#DmClienteId').empty();
+                        $('#DmOrValorId').empty();
+                        $('#DmOrTipoServId').empty();
+                        $('#DmOrSubTipoServId').empty();
+                        $('#DmNecessidadeId').empty();
+
+                        $.post('@Url.Action("FindOrcamento", "Orcamento")', { idDemanda: idDemanda }, function (data) {
+                            /*for (x in data) {
+                                if (typeof data[x] != "object") {
+
+                                } else {
+                                    for (var y in data[x]) {
+                                        alert(data[x][y])
+                                    }
+                                }
+                        
+                            }*/
+                            alert(JSON.stringify(data));
+                            DmClienteId
                             $('#DmOrValor').val(data.valor);
-                            
+                            $('#DmOrTipoServ').val(data.tipoServico.nome);
+                            $('#DmOrSubTipoServ').val(data.subTipoServico.nome);
+                            $('#DmNecessidade').val(data.necessidade.nome);
+
+                            $('#DmOrValorId').val(data.valor);
+                            $('#DmOrTipoServId').val(data.tipoServicoId);
+                            $('#DmOrSubTipoServId').val(data.subTipoServicoId);
+                            $('#DmNecessidadeId').val(data.necessidadeId);
 
                         });
-                }
+                    }
+        });
+    
     });
-});
+    function Enviar() {
+        document.getElementById('Formulario').submit();
+    }  
 </script>
 
 

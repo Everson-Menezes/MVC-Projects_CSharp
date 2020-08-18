@@ -174,12 +174,7 @@ namespace OBM_Project.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TB_Demanda", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TB_Demanda_TB_Clientes_ClienteId",
-                        column: x => x.ClienteId,
-                        principalTable: "TB_Clientes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                    
                     table.ForeignKey(
                         name: "FK_TB_Demanda_TB_Orcamentos_OrcamentoId",
                         column: x => x.OrcamentoId,

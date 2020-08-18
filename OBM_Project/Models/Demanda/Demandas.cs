@@ -9,7 +9,7 @@ namespace OBM_Project.Models.Demanda
     {
         public int Id { get; set; }
         public Clientes Cliente { get; set; }
-        public int ClienteId { get; set; }
+        public int ? ClienteId { get; set; }
         public Orcamentos Orcamento { get; set; }
         public int OrcamentoId { get; set; }
         public double Valor { get; set; }

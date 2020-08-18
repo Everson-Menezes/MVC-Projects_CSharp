@@ -72,6 +72,12 @@ namespace OBM_Project.Services
             //fazer join orçamentos, necessidade, tipo serviço e subtipo
             
             Orcamentos retorno = _ProjectContext.TB_Orcamentos.AsEnumerable().Where(x => id == x.Id).FirstOrDefault();
+            TipoServico tipoServico = _ProjectContext.TB_TipoServico.Where(x => retorno.TipoServicoId == x.Id).FirstOrDefault();
+            SubTipoServico subTipo = _ProjectContext.TB_SubTipoServico.Where(x => retorno.SubTipoServicoId == x.Id).FirstOrDefault();
+            Necessidade necessidade = _ProjectContext.TB_Necessidade.Where(x => retorno.NecessidadeId == x.Id).FirstOrDefault();
+            retorno.SubTipoServico.Nome = subTipo.Nome;
+            retorno.TipoServico.Nome = tipoServico.Nome;
+            retorno.Necessidade.Nome = necessidade.Nome;
             return retorno;
         }
         
