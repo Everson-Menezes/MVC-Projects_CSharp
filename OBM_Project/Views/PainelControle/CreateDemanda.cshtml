@@ -108,6 +108,7 @@ $(document).ready(function () {
                         $('#DmOrSubTipoServ').empty();
                         $('#DmNecessidade').empty();
 
+                        
                         $('#DmClienteId').empty();
                         $('#DmOrValorId').empty();
                         $('#DmOrTipoServId').empty();
@@ -126,12 +127,14 @@ $(document).ready(function () {
                         
                             }*/
                             alert(JSON.stringify(data));
+
                             DmClienteId
                             $('#DmOrValor').val(data.valor);
                             $('#DmOrTipoServ').val(data.tipoServico.nome);
                             $('#DmOrSubTipoServ').val(data.subTipoServico.nome);
                             $('#DmNecessidade').val(data.necessidade.nome);
 
+                            $('#DmOrId').val(data.id);
                             $('#DmOrValorId').val(data.valor);
                             $('#DmOrTipoServId').val(data.tipoServicoId);
                             $('#DmOrSubTipoServId').val(data.subTipoServicoId);

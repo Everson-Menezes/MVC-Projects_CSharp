@@ -74,6 +74,9 @@ namespace OBM_Project.Services
         {
            return _ProjectContext.TB_Clientes.OrderBy(x => x.Nome).ToList();
         }
-
+        public List<Demandas> ListarDemandas()
+        {
+            return _ProjectContext.TB_Demanda.OrderBy(x => x.Id).ToList();
+        }
     }
 }

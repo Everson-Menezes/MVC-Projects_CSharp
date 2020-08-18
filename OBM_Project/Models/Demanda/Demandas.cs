@@ -9,7 +9,7 @@ namespace OBM_Project.Models.Demanda
     {
         public int Id { get; set; }
         public Clientes Cliente { get; set; }
-        public int ? ClienteId { get; set; }
+        public int ClienteId { get; set; }
         public Orcamentos Orcamento { get; set; }
         public int OrcamentoId { get; set; }
         public double Valor { get; set; }
@@ -20,12 +20,13 @@ namespace OBM_Project.Models.Demanda
 
         }
 
-        public Demandas(int id, Clientes cliente, Orcamentos orcamento)
+        public Demandas(int id, Clientes cliente, Orcamentos orcamento, double valor, DateTime dataAbertura)
         {
             Id = id;
             Cliente = cliente;
             Orcamento = orcamento;
-            DataAbertura = DateTime.Now;
+            Valor = valor;
+            DataAbertura = dataAbertura;
         }
     }
 }
