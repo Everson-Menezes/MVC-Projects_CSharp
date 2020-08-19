@@ -31,9 +31,11 @@ namespace OBM_Project.Controllers
             TempData["Usuario"] = JsonConvert.SerializeObject(obj);
             if (_painelControleServices.ValidarUsuario(obj))
             {
-                return View("Index", "PainelControle");
+                var model = _orcamentoServices.ListarOrcamentosPendentes();
+                return View("Index", model);
             }
             //Caixa de dialogo login invalido
+            
             return RedirectToAction("Index", "Home");
         }
 
@@ -49,7 +51,11 @@ namespace OBM_Project.Controllers
             //Caixa de dialogo login invalido
             return RedirectToAction("Index", "Home");
         }
-
+        public IActionResult OrcamentosPendentes()
+        {
+            var orcamentosPendentes = _orcamentoServices.ListarOrcamentosPendentes();
+            return View(orcamentosPendentes);
+        }
         public IActionResult TipoServico()
         {
             return View();
