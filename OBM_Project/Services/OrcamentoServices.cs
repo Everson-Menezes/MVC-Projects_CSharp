@@ -2,8 +2,6 @@
 using OBM_Project.Models.Orcamento;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace OBM_Project.Services
 {
@@ -16,10 +14,10 @@ namespace OBM_Project.Services
             _ProjectContext = projectContext;
         }
 
-        public void AdicionarOrcamento(Orcamentos obj)
+        public void AdicionarOrcamento(Orcamentos orcamentos)
         {
-            CalcularOrcamento(obj);
-            _ProjectContext.Add(obj);
+            CalcularOrcamento(orcamentos);
+            _ProjectContext.Add(orcamentos);
             _ProjectContext.SaveChanges();
         }
 

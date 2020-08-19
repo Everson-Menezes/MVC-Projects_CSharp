@@ -65,9 +65,9 @@ namespace OBM_Project.Services
             _ProjectContext.Add(obj);
             _ProjectContext.SaveChanges();
         }
-        public void AdicionarDemanda(Demandas obj)
+        public void AdicionarDemanda(Demandas demandas)
         {
-            _ProjectContext.Add(obj);
+            _ProjectContext.Add(demandas);
             _ProjectContext.SaveChanges();
         }
         public List<Clientes> ListarClientes()
@@ -77,6 +77,10 @@ namespace OBM_Project.Services
         public List<Demandas> ListarDemandas()
         {
             return _ProjectContext.TB_Demanda.OrderBy(x => x.Id).ToList();
+        }
+        public Clientes BuscarCliente(string nome)
+        {
+            return _ProjectContext.TB_Clientes.Where(x => x.Nome.Equals(nome)).FirstOrDefault();
         }
     }
 }

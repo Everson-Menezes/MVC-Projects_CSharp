@@ -12,15 +12,7 @@
             <th>
                 Orçamento
             </th>
-            <th>
-                Tipo de serviço
-            </th>
-            <th>
-                Subtipo de serviço
-            </th>
-            <th>
-                Necessidade
-            </th>
+            
             <th>
                 Data de abertura
             </th>
@@ -42,22 +34,14 @@
             {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                @Html.DisplayFor(modelItem => item.ClienteId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrcamentoId)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.Orcamento.TipoServico.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Orcamento.SubTipoServico.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Orcamento.Necessidade.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Orcamento.DataGeracao)
+                @Html.DisplayFor(modelItem => item.DataAbertura)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Valor)

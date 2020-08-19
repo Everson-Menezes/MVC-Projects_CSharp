@@ -129,5 +129,11 @@ namespace OBM_Project.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public Clientes FindCliente(string nomeCliente)
+        {
+            Clientes retorno = _painelControleServices.BuscarCliente(nomeCliente);
+            return retorno;
+        }
     }
 }
