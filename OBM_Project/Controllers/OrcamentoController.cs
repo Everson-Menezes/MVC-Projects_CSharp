@@ -55,6 +55,11 @@ namespace OBM_Project.Controllers
         public IActionResult FindOrcamento(int idDemanda)
         {
             Orcamentos orcamento = _orcamentoServices.FindById(idDemanda);
+            if(orcamento.Valor != 0)
+            {
+                orcamento.Valor.ToString().Replace(".", ",");
+            }
+           
             return Json(orcamento);
         }
 

@@ -9,6 +9,8 @@ using OBM_Project.Data;
 using OBM_Project.Services;
 using System;
 using Rotativa.AspNetCore;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 namespace OBM_Project
 {
@@ -52,6 +54,10 @@ namespace OBM_Project
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingServices seedingServices)
         {
+            app.UseRequestLocalization();
+
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("pt-BR");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

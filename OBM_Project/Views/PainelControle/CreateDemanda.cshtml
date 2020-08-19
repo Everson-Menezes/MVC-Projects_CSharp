@@ -30,11 +30,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Demanda.Valor" class="control-label"></label>
-                <input id="DmOrValor" class="form-control" />
+                <input id="DmOrValor" type="number" class="form-control"  />
             </div>
             <div class="form-group">
                 <label asp-for="Demanda.DataAbertura" class="control-label"></label>
-                <input type="date" asp-for="Demanda.DataAbertura" class="form-control" />
+                <input id="dtAbertura" type="date" asp-for="Demanda.DataAbertura" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Demanda.DataTermino" class="control-label"></label>
@@ -48,14 +48,13 @@
     </div>
 </div>
 
-<div hidden="hidden">
+<!-- envia -->
+<div >
     <form id="Formulario" asp-action="AdicionarDemanda" asp-controller="PainelControle">
         <div class="text-danger"></div>
         <div class="form-group">
             <label for="Orcamento" class="control-label">Número do Orçamento</label>
-            <select id="DmOrId" asp-for="Demanda.OrcamentoId" class="form-control">
-                <option>selecione</option>
-            </select>
+            <input id="DmOrId" asp-for="Demanda.OrcamentoId" class="form-control" />
         </div>
         <div class="form-group">
             <label for="Nome" class="control-label">Nome do cliente</label>
@@ -63,11 +62,11 @@
         </div>
         <div class="form-group">
             <label asp-for="Demanda.Valor" class="control-label"></label>
-            <input id="DmOrValorId" asp-for="Demanda.Valor" class="form-control" />
+            <input id="DmOrValorId" asp-format="{0:N2}" asp-is-invariant="true" type = "text" asp-for="Demanda.Valor" class="form-control" />
         </div>
         <div class="form-group">
             <label asp-for="Demanda.DataAbertura" class="control-label"></label>
-            <input type="date" asp-for="Demanda.DataAbertura" class="form-control" />
+            <input id="dtAberturaId" type="date" asp-for="Demanda.DataAbertura" class="form-control" />
         </div>
         <div class="form-group">
             <label asp-for="Demanda.DataTermino" class="control-label"></label>
@@ -79,8 +78,9 @@
 </div>
 
 <div>
-    <a asp-action="Index" asp-controller="PainelControle">Back to List</a>
+   <button id="teste"class="btn-default" onclick="testar();"> teste</button>
 </div>
+
 
 <script type="text/javascript">
 $(document).ready(function () {
@@ -88,17 +88,12 @@ $(document).ready(function () {
     $('#DmOrVinculo').change(function () {
 
         var idDemanda = $('#DmOrVinculo').val();
-            
+
                     if (idDemanda > 0) {
                         $('#DmOrValor').empty();
                         $('#DmOrTipoServ').empty();
                         $('#DmOrSubTipoServ').empty();
                         $('#DmNecessidade').empty();
-
-                        $('#DmOrValorId').empty();
-                        $('#DmOrTipoServId').empty();
-                        $('#DmOrSubTipoServId').empty();
-                        $('#DmNecessidadeId').empty();
 
                         $.post('@Url.Action("FindOrcamento", "Orcamento")', { idDemanda: idDemanda }, function (data) {
                             /*for (x in data) {
@@ -113,34 +108,32 @@ $(document).ready(function () {
                             }*/
                            // alert(JSON.stringify(data));
 
-
                             $('#DmOrValor').val(data.valor);
                             $('#DmOrTipoServ').val(data.tipoServico.nome);
                             $('#DmOrSubTipoServ').val(data.subTipoServico.nome);
                             $('#DmNecessidade').val(data.necessidade.nome);
 
-                            $('#DmOrId').val(data.id);
-                            var teste = $('#DmOrId').val();
-                            alert(teste);
-                            alert(data.id);
+                            $('#DmOrId').val(idDemanda);
+                            data.valor = data.valor.toString().replace(".", ",");
+                            alert(data.valor);
                             $('#DmOrValorId').val(data.valor);
-                            $('#DmOrTipoServId').val(data.tipoServicoId);
-                            $('#DmOrSubTipoServId').val(data.subTipoServicoId);
-                            $('#DmNecessidadeId').val(data.necessidadeId);
-                                                        
+
                         });
                     }
         });
 
     });
     function Enviar() {
+
+        var dtAbertura = $('#dtAbertura').val();
+        $('#dtAberturaId').val(dtAbertura);
+
         document.getElementById('Formulario').submit();
     }
 
     function BuscarCliente() {
 
         var nomeCliente = $('#DmClienteNome').val();
-        alert(nomeCliente);
 
         $.post('@Url.Action("FindCliente", "PainelControle")', { 'nomeCliente' : nomeCliente }, function (data) {
 
@@ -153,7 +146,14 @@ $(document).ready(function () {
             }
 
         });
+
     }
+    function testar() {
+
+        var valor = $('#DmOrValorId').val();
+        alert(valor)
+
+       }
 
 </script>
 

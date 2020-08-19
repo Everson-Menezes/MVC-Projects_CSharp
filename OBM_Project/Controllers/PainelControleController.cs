@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using OBM_Project.Models.Cliente;
 using OBM_Project.Models.Demanda;
+using System.Globalization;
 
 namespace OBM_Project.Controllers
 {
@@ -97,6 +98,7 @@ namespace OBM_Project.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AdicionarCliente(Clientes clientes)
         {
+            clientes.Nome = string.Format(clientes.Nome.ToUpper());
             _painelControleServices.AdicionarCliente(clientes);
 
             return RedirectToAction("Retorno");
@@ -104,7 +106,7 @@ namespace OBM_Project.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AdicionarDemanda(Demandas demanda)
-        {
+        { 
             _painelControleServices.AdicionarDemanda(demanda);
 
             return RedirectToAction("Retorno");
@@ -132,6 +134,7 @@ namespace OBM_Project.Controllers
         [HttpPost]
         public Clientes FindCliente(string nomeCliente)
         {
+            nomeCliente = string.Format(nomeCliente.ToUpper());
             Clientes retorno = _painelControleServices.BuscarCliente(nomeCliente);
             return retorno;
         }

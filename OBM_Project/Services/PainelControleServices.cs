@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using OBM_Project.Data;
 using OBM_Project.Models.Cliente;
@@ -67,6 +68,7 @@ namespace OBM_Project.Services
         }
         public void AdicionarDemanda(Demandas demandas)
         {
+            
             _ProjectContext.Add(demandas);
             _ProjectContext.SaveChanges();
         }
