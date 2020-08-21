@@ -5,10 +5,9 @@ using OBM_Project.Models.ViewModels;
 using OBM_Project.Models.Contato;
 using OBM_Project.Models.Usuario;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using OBM_Project.Models.Cliente;
 using OBM_Project.Models.Demanda;
-using System.Globalization;
+
 
 namespace OBM_Project.Controllers
 {
@@ -35,7 +34,7 @@ namespace OBM_Project.Controllers
                 return View("Index", model);
             }
             //Caixa de dialogo login invalido
-            
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -112,7 +111,7 @@ namespace OBM_Project.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AdicionarDemanda(Demandas demanda)
-        { 
+        {
             _painelControleServices.AdicionarDemanda(demanda);
 
             return RedirectToAction("Retorno");
@@ -144,5 +143,7 @@ namespace OBM_Project.Controllers
             Clientes retorno = _painelControleServices.BuscarCliente(nomeCliente);
             return retorno;
         }
+        
+
     }
 }

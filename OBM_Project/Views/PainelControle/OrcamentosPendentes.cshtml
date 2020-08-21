@@ -9,28 +9,27 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th width="150px" align="center">
                 N° Orçamento
             </th>
-            <th>
+            <th width="150px" align="center">
                 @Html.DisplayNameFor(model => model.TipoServico)
             </th>
-            <th>
+            <th width="150px" align="center">
                 @Html.DisplayNameFor(model => model.SubTipoServico)
             </th>
-            <th>
+            <th width="150px" align="center">
                 @Html.DisplayNameFor(model => model.Necessidade)
             </th>
-            <th>
+            <th width="300px" align="center">
                 @Html.DisplayNameFor(model => model.Observacao)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataGeracao)
-            </th>
-            <th>
+            <th width="150px" align="center">
                 @Html.DisplayNameFor(model => model.Valor)
             </th>
-            <th></th>
+            <th width="200px">
+
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -54,16 +53,13 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Observacao)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataGeracao)
-                    </td>
+                    
                     <td>
                         @Html.DisplayFor(modelItem => item.Valor)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="EditarOrcamento" asp-controller="Orcamento" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="DeleteOrcamento" asp-controller="Orcamento"  asp-route-id="@item.Id">Delete</a>
                     </td>
                 </tr>
             }

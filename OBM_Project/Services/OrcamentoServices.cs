@@ -1,4 +1,5 @@
-﻿using OBM_Project.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using OBM_Project.Data;
 using OBM_Project.Models.Orcamento;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace OBM_Project.Services
         }
         public List<Orcamentos> ListarOrcamentosPendentes()
         {
-            return _ProjectContext.TB_Orcamentos.Where(x => x.Valor == 0).ToList();
+            return _ProjectContext.TB_Orcamentos.Include(x => x.Necessidade).Include(y => y.TipoServico).Include(w => w.SubTipoServico).Where(z => z.Valor == 0).ToList();
         }
         public List<Orcamentos> ListarOrcamentos()
         {

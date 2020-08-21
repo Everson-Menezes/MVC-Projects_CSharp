@@ -43,8 +43,15 @@ namespace OBM_Project.Controllers
         public IActionResult Visualizar(Orcamentos orcamentos)
         {
             var obj = _orcamentoServices.VisualizarOrcamento(orcamentos);
-            TempData["Orcamento"] = JsonConvert.SerializeObject(obj);
-            return View(obj);
+            if (orcamentos.Valor > 0)
+            {
+                TempData["Orcamento"] = JsonConvert.SerializeObject(obj);
+                return View(obj);
+            }
+            else
+            {
+                return Content("Seu orçamento está em cotação, por favor aguarde!");
+            }
         }
         public IActionResult Imprimir()
         {
@@ -62,6 +69,15 @@ namespace OBM_Project.Controllers
            
             return Json(orcamento);
         }
+        public IActionResult EditarOrcamento(int id)
+        {
 
+            var obj = _orcamentoServices.FindById(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
     }
 }
