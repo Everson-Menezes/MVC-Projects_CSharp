@@ -2,24 +2,78 @@
 
 <h4>Orcamentos</h4>
 <hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th width="150px" align="center">
+                N° Orçamento
+            </th>
+            <th width="150px" align="center">
+                @Html.DisplayNameFor(model => model.TipoServico)
+            </th>
+            <th width="150px" align="center">
+                @Html.DisplayNameFor(model => model.SubTipoServico)
+            </th>
+            <th width="150px" align="center">
+                @Html.DisplayNameFor(model => model.Necessidade)
+            </th>
+            <th width="300px" align="center">
+                @Html.DisplayNameFor(model => model.Observacao)
+            </th>
+            <th width="150px" align="center">
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th width="200px">
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.TipoServico.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.SubTipoServico.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Necessidade.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Observacao)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Valor)
+                    </td>
+                    
+                </tr>
+            }
+        }
+    </tbody>
+</table>
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="View">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+        <form asp-action="AlterarOrcamento" asp-controller="Orcamento">
             
             <div class="form-group">
-                <label asp-for="DataGeracao" class="control-label"></label>
-                <input asp-for="DataGeracao" class="form-control" />
-                <span asp-validation-for="DataGeracao" class="text-danger"></span>
+                <label class="control-label">N° Orçamento </label>
+                <input asp-for="Id"  class="form-control" />
             </div>
+
             <div class="form-group">
                 <label asp-for="Valor" class="control-label"></label>
                 <input asp-for="Valor" class="form-control" />
-                <span asp-validation-for="Valor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Salvar" class="btn btn-default" />
             </div>
         </form>
     </div>
@@ -28,10 +82,6 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 
 @section A{ }
 @section B{ }

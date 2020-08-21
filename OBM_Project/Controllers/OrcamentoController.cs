@@ -36,14 +36,16 @@ namespace OBM_Project.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Solicitar(Orcamentos orcamentos)
         {
+            orcamentos.DataGeracao = DateTime.Now;
             _orcamentoServices.AdicionarOrcamento(orcamentos);
             Orcamentos ultimo = _orcamentoServices.SolicitarOrcamento();
-            return Content("Seu orçamento gerou a numeração: " + ultimo.Id );
+            return Content("Seu orçamento gerou a numeração: " + ultimo.Id);
         }
+
         public IActionResult Visualizar(Orcamentos orcamentos)
         {
             var obj = _orcamentoServices.VisualizarOrcamento(orcamentos);
-            if (orcamentos.Valor > 0)
+            if (obj.Valor > 0)
             {
                 TempData["Orcamento"] = JsonConvert.SerializeObject(obj);
                 return View(obj);
@@ -62,11 +64,11 @@ namespace OBM_Project.Controllers
         public IActionResult FindOrcamento(int idDemanda)
         {
             Orcamentos orcamento = _orcamentoServices.FindById(idDemanda);
-            if(orcamento.Valor != 0)
+            if (orcamento.Valor != 0)
             {
                 orcamento.Valor.ToString().Replace(".", ",");
             }
-           
+
             return Json(orcamento);
         }
         public IActionResult EditarOrcamento(int id)
@@ -78,6 +80,13 @@ namespace OBM_Project.Controllers
                 return NotFound();
             }
             return View(obj);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AlterarOrcamento(int id, double valor)
+        {
+            _orcamentoServices.AlterarValor(id, valor);
+            return RedirectToAction("OrcamentosPendentes", "PainelControle");
         }
     }
 }

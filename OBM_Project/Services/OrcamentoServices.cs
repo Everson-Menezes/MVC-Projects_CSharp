@@ -76,6 +76,14 @@ namespace OBM_Project.Services
             retorno.Necessidade.Nome = necessidade.Nome;
             return retorno;
         }
+        public Orcamentos AlterarValor(int id, double valor)
+        {
+            Orcamentos orcamentos = _ProjectContext.TB_Orcamentos.AsEnumerable().Where(x => id == x.Id).FirstOrDefault();
+            orcamentos.Valor = valor;
+            _ProjectContext.Update(orcamentos);
+            _ProjectContext.SaveChanges();
+            return orcamentos;
+        }
         
     }
 }

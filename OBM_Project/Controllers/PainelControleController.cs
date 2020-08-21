@@ -112,6 +112,7 @@ namespace OBM_Project.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AdicionarDemanda(Demandas demanda)
         {
+            demanda.DataAbertura = System.DateTime.Now;
             _painelControleServices.AdicionarDemanda(demanda);
 
             return RedirectToAction("Retorno");

@@ -6,64 +6,104 @@
     var obj = TempData["Orcamento"];
 }
 
-<div class="col-lg-4">
-    <h2>Seu orçamento</h2>
-</div>
-
-<table class="table">
-    <thead>
+<div>
+    <table border="1">
         <tr>
-            <th>
-                N° Orçamento
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoServico)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SubTipoServico)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Observacao)
-            </th>
-            <th>
-                Valor Orçado
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => modelItem.Id)
+            <td style="background-color:gainsboro">
             </td>
-            <td>
+
+            <td width="35" align="center">
+                <img src="~/images/WhatsApp Image 2020-08-11 at 08.08.13.jpeg" style="width:450px; height:100px" />
+            </td>
+
+            <td width="250" align="center" style="background-color:gainsboro">
+                <b>N° Orçamento:</b><br /><br /> @Html.DisplayFor(modelItem => modelItem.Id)
+            </td>
+
+            <td width="350" align="center" style="background-color:gainsboro">
+                <b>Data de gerção:</b> <br /><br /> @Html.DisplayFor(modelItem => modelItem.DataGeracao)
+            </td>
+        </tr>
+        <tr height="10">
+        </tr>
+        <tr>
+            <td style="background-color:gainsboro">
+                <b>Tipo de serviço:</b>
+            </td>
+
+            <td align="center" style="background-color:gainsboro">
                 @Html.DisplayFor(modelItem => modelItem.TipoServico.Nome)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => modelItem.SubTipoServico.Nome)
+            <td style="background-color:gainsboro">
             </td>
-            <td style=" width:300px">
-                @Html.DisplayFor(modelItem => modelItem.Observacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => modelItem.Valor)
+
+            <td style="background-color:gainsboro">
             </td>
         </tr>
-    </tbody>
-</table>
+        <tr height="10">
+        </tr>
+        <tr>
+            <td width="300" style="background-color:gainsboro">
+                <b>Subtipo de serviço:</b>
+            </td>
+            <td width="35" align="center" style="background-color:gainsboro">
+                @Html.DisplayFor(modelItem => modelItem.SubTipoServico.Nome)
+            </td>
+            <td style="background-color:gainsboro">
+            </td>
+
+            <td style="background-color:gainsboro">
+            </td>
+        </tr>
+        <tr height="10">
+        </tr>
+        <tr>
+            <td style="background-color:gainsboro">
+                <b>Observações: </b>
+            </td>
+            <td align="center">
+                <table>
+                    <tr>
+                        <td >
+                            @Html.DisplayFor(modelItem => modelItem.Observacao)
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="background-color:gainsboro">
+            </td>
+
+            <td style="background-color:gainsboro">
+            </td>
+        </tr>
+        <tr height="10">
+        </tr>
+        <tr style="background-color:gainsboro">
+            <td>
+            </td>
+            <td>
+            </td>
+            <td align="right">
+                <b>Valor: </b>
+            </td>
+            <td align="center">
+                R$  @Html.DisplayFor(modelItem => modelItem.Valor)
+            </td>
+        </tr>
+    </table>
+</div>
+<br />
+<div>
+    <a class="btn btn-default" asp-action="Imprimir" asp-controller="Orcamento" style="width:240px">Imprimir Orçamento</a>
+</div>
+<br />
+
 @section A{ }
 @section B{ }
-@section C
-{
-    <a class="btn btn-default" asp-action="Imprimir" asp-controller="Orcamento" style="width:240px">Imprimir Orçamento</a>
-}
+@section C{ }
 @section D{ }
 
-@section F
-{
-    <img src="~/images/WhatsApp Image 2020-08-11 at 08.08.13.jpeg" class="img-responsive" style="width:260px; height:100px" />
-}
+@section F{ }
 @section G{ }
 @section H{ }
 
