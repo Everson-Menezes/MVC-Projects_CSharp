@@ -9,6 +9,7 @@ namespace OBM_Project.Models.Demanda
     public class Demandas
     {
         public int Id { get; set; }
+        public Clientes Clientes { get; set; }
         public int ClienteId { get; set; }
         public int OrcamentoId { get; set; }
         [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = true)]

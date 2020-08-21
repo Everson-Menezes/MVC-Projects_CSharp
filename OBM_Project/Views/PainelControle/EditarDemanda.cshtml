@@ -1,0 +1,93 @@
+﻿@model OBM_Project.Models.Demanda.Demandas
+
+<h4>Orcamentos</h4>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th width="150px" align="center">
+                N° Demanda
+            </th>
+            <th width="150px" align="center">
+                Cliente
+            </th>
+            <th>
+                Contato do cliente
+            </th>
+            <th width="150px" align="center">
+                Data de abertura
+            </th>
+            <th width="150px" align="center">
+                Data término
+            </th>
+            <th width="300px" align="center">
+                Valor
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Id)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(modelItem => Model.Clientes.Nome)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Clientes.Contato)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.DataAbertura)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.DataTermino)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Valor)
+                    </td>
+
+
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AlterarOrcamento" asp-controller="Orcamento">
+
+            <div class="form-group">
+                <label class="control-label">N° Orçamento </label>
+                <input asp-for="Id" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label"></label>
+                <input asp-for="Valor" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section A{ }
+@section B{ }
+@section C{ }
+@section D{ }
+
+@section F{ }
+@section G{ }
+@section H{ }
+
+@section I{ }

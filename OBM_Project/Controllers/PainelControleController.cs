@@ -144,7 +144,18 @@ namespace OBM_Project.Controllers
             Clientes retorno = _painelControleServices.BuscarCliente(nomeCliente);
             return retorno;
         }
-        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditarDemanda(int id)
+        {
+
+            var obj = _painelControleServices.FindById(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
 
     }
 }

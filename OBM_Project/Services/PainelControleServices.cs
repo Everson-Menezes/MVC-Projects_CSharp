@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using OBM_Project.Data;
 using OBM_Project.Models.Cliente;
 using OBM_Project.Models.Demanda;
@@ -83,6 +84,11 @@ namespace OBM_Project.Services
         public Clientes BuscarCliente(string nome)
         {
             return _ProjectContext.TB_Clientes.Where(x => x.Nome.Equals(nome)).FirstOrDefault();
+        }
+        public Demandas FindById(int id)
+        {
+            Demandas retorno = _ProjectContext.TB_Demanda.Include(a => a.Clientes).Where(x => x.Id == id).FirstOrDefault();
+            return retorno;
         }
     }
 }
