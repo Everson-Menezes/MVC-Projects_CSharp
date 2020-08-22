@@ -45,10 +45,14 @@ namespace OBM_Project.Controllers
         public IActionResult Visualizar(Orcamentos orcamentos)
         {
             var obj = _orcamentoServices.VisualizarOrcamento(orcamentos);
-            if (obj.Valor > 0)
+            if (obj.Valor > 0 )
             {
-                TempData["Orcamento"] = JsonConvert.SerializeObject(obj);
-                return View(obj);
+                if(obj.Solicitante.ToLower() == orcamentos.Solicitante.ToLower())
+                {
+                    TempData["Orcamento"] = JsonConvert.SerializeObject(obj);
+                    return View(obj);
+                }
+                return Content("Solicitante informado está divergente");
             }
             else
             {

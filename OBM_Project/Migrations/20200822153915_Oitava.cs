@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OBM_Project.Migrations
 {
-    public partial class setima : Migration
+    public partial class Oitava : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -109,7 +109,6 @@ namespace OBM_Project.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ClientesId = table.Column<int>(nullable: true),
                     ClienteId = table.Column<int>(nullable: false),
                     OrcamentoId = table.Column<int>(nullable: false),
                     Valor = table.Column<double>(nullable: false),
@@ -120,11 +119,11 @@ namespace OBM_Project.Migrations
                 {
                     table.PrimaryKey("PK_TB_Demanda", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TB_Demanda_TB_Clientes_ClientesId",
-                        column: x => x.ClientesId,
+                        name: "FK_TB_Demanda_TB_Clientes_ClienteId",
+                        column: x => x.ClienteId,
                         principalTable: "TB_Clientes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,6 +152,7 @@ namespace OBM_Project.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Solicitante = table.Column<string>(nullable: false),
                     TipoServicoId = table.Column<int>(nullable: false),
                     SubTipoServicoId = table.Column<int>(nullable: false),
                     NecessidadeId = table.Column<int>(nullable: false),
@@ -189,9 +189,9 @@ namespace OBM_Project.Migrations
                 column: "AreaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TB_Demanda_ClientesId",
+                name: "IX_TB_Demanda_ClienteId",
                 table: "TB_Demanda",
-                column: "ClientesId");
+                column: "ClienteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TB_Orcamentos_NecessidadeId",

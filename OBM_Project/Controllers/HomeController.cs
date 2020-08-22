@@ -52,6 +52,11 @@ namespace OBM_Project.Controllers
         {
             return Redirect("https://github.com/Everson-Menezes/MVC-Projects_CSharp");
         }
+        public IActionResult Npn()
+        {
+            return Redirect("https://www.facebook.com/NPNEntregasRapidas");
+        }
+        
        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

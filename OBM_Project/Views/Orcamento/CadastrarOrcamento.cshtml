@@ -14,6 +14,10 @@
                 <div>
                     <form id="Solicitar" asp-action="Solicitar" asp-controller="Orcamento">
                         <div class="form-group">
+                            <label for="exampleFormControlSelect1">Solicitante</label>
+                            <input asp-for="Orcamentos.Solicitante" class="form-control" placeholder="Insira seu nome aqui!"/>
+                        </div>
+                        <div class="form-group">
                             <label for="exampleFormControlSelect1">Tipo Serviço</label>
                             <select id="TipoServicoId" asp-for="Orcamentos.TipoServicoId" asp-items="@(new SelectList(Model.TipoServicos, "Id", "Nome"))" class="form-control">
                                 <option>selecione</option>
@@ -54,8 +58,10 @@
                 <form asp-action="Visualizar" asp-controller="Orcamento" style="width:240px">
                     <div class="form-group">
                         <input asp-for="Orcamentos.Id" class="form-control" placeholder="Insira o número do orçamento" />
+                        <input asp-for="Orcamentos.Solicitante" class="form-control" placeholder="Insira o solicitante" />
                         <input id="Solicitar" type="submit" value="Vizualizar Orçamento" class="btn btn-default" />
                     </div>
+                    
                 </form>
                 <br />
             </td>

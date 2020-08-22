@@ -84,8 +84,6 @@ namespace OBM_Project.Migrations
 
                     b.Property<int>("ClienteId");
 
-                    b.Property<int?>("ClientesId");
-
                     b.Property<DateTime>("DataAbertura");
 
                     b.Property<DateTime>("DataTermino");
@@ -96,7 +94,7 @@ namespace OBM_Project.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientesId");
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("TB_Demanda");
                 });
@@ -124,6 +122,9 @@ namespace OBM_Project.Migrations
                     b.Property<int>("NecessidadeId");
 
                     b.Property<string>("Observacao")
+                        .IsRequired();
+
+                    b.Property<string>("Solicitante")
                         .IsRequired();
 
                     b.Property<int>("SubTipoServicoId");
@@ -201,9 +202,10 @@ namespace OBM_Project.Migrations
 
             modelBuilder.Entity("OBM_Project.Models.Demanda.Demandas", b =>
                 {
-                    b.HasOne("OBM_Project.Models.Cliente.Clientes", "Clientes")
+                    b.HasOne("OBM_Project.Models.Cliente.Clientes", "Cliente")
                         .WithMany()
-                        .HasForeignKey("ClientesId");
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("OBM_Project.Models.Orcamento.Orcamentos", b =>

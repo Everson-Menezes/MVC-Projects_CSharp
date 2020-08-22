@@ -9,8 +9,8 @@ using OBM_Project.Data;
 namespace OBM_Project.Migrations
 {
     [DbContext(typeof(OBM_ProjectContext))]
-    [Migration("20200821220413_setima")]
-    partial class setima
+    [Migration("20200822153915_Oitava")]
+    partial class Oitava
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -86,8 +86,6 @@ namespace OBM_Project.Migrations
 
                     b.Property<int>("ClienteId");
 
-                    b.Property<int?>("ClientesId");
-
                     b.Property<DateTime>("DataAbertura");
 
                     b.Property<DateTime>("DataTermino");
@@ -98,7 +96,7 @@ namespace OBM_Project.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientesId");
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("TB_Demanda");
                 });
@@ -126,6 +124,9 @@ namespace OBM_Project.Migrations
                     b.Property<int>("NecessidadeId");
 
                     b.Property<string>("Observacao")
+                        .IsRequired();
+
+                    b.Property<string>("Solicitante")
                         .IsRequired();
 
                     b.Property<int>("SubTipoServicoId");
@@ -203,9 +204,10 @@ namespace OBM_Project.Migrations
 
             modelBuilder.Entity("OBM_Project.Models.Demanda.Demandas", b =>
                 {
-                    b.HasOne("OBM_Project.Models.Cliente.Clientes", "Clientes")
+                    b.HasOne("OBM_Project.Models.Cliente.Clientes", "Cliente")
                         .WithMany()
-                        .HasForeignKey("ClientesId");
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("OBM_Project.Models.Orcamento.Orcamentos", b =>

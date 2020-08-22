@@ -7,6 +7,7 @@ namespace OBM_Project.Models.Orcamento
     {
         public int Id { get; set; }
         [Required]
+        public string Solicitante { get; set; }
         public TipoServico TipoServico { get; set; }
         public int TipoServicoId { get; set; }
         [Required]
@@ -25,13 +26,14 @@ namespace OBM_Project.Models.Orcamento
 
         }
 
-        public Orcamentos(int id, TipoServico tipoServico, SubTipoServico subTipoServico, Necessidade necessidade, string observacao)
+        public Orcamentos(int id, TipoServico tipoServico, SubTipoServico subTipoServico, Necessidade necessidade, string observacao, string solicitante)
         {
             Id = id;
             TipoServico = tipoServico;
             SubTipoServico = subTipoServico;
             Necessidade = necessidade;
             Observacao = observacao;
+            Solicitante = solicitante;
             DataGeracao = DateTime.Now;
         }
     }
