@@ -46,7 +46,7 @@ namespace OBM_Project.Services
         }
         public List<Orcamentos> ListarOrcamentos()
         {
-            return _ProjectContext.TB_Orcamentos.ToList();
+            return _ProjectContext.TB_Orcamentos.Where(x => x.Valor > 0).ToList();
         }
 
         public Orcamentos SolicitarOrcamento()

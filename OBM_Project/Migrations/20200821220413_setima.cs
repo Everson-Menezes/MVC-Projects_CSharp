@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OBM_Project.Migrations
 {
-    public partial class Sexta : Migration
+    public partial class setima : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace OBM_Project.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true)
+                    Nome = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,29 +38,12 @@ namespace OBM_Project.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TB_Demanda",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ClienteId = table.Column<int>(nullable: false),
-                    OrcamentoId = table.Column<int>(nullable: false),
-                    Valor = table.Column<double>(nullable: false),
-                    DataAbertura = table.Column<DateTime>(nullable: false),
-                    DataTermino = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TB_Demanda", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "TB_Necessidade",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true)
+                    Nome = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,7 +56,7 @@ namespace OBM_Project.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true)
+                    Nome = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -102,12 +85,12 @@ namespace OBM_Project.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    Telefone = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Telefone = table.Column<string>(nullable: false),
                     AreaId = table.Column<int>(nullable: false),
-                    Assunto = table.Column<string>(nullable: true),
-                    Conteudo = table.Column<string>(nullable: true)
+                    Assunto = table.Column<string>(nullable: false),
+                    Conteudo = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -121,12 +104,36 @@ namespace OBM_Project.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TB_Demanda",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ClientesId = table.Column<int>(nullable: true),
+                    ClienteId = table.Column<int>(nullable: false),
+                    OrcamentoId = table.Column<int>(nullable: false),
+                    Valor = table.Column<double>(nullable: false),
+                    DataAbertura = table.Column<DateTime>(nullable: false),
+                    DataTermino = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TB_Demanda", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TB_Demanda_TB_Clientes_ClientesId",
+                        column: x => x.ClientesId,
+                        principalTable: "TB_Clientes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TB_SubTipoServico",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: false),
                     TipoServicoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -149,7 +156,7 @@ namespace OBM_Project.Migrations
                     TipoServicoId = table.Column<int>(nullable: false),
                     SubTipoServicoId = table.Column<int>(nullable: false),
                     NecessidadeId = table.Column<int>(nullable: false),
-                    Observacao = table.Column<string>(nullable: true),
+                    Observacao = table.Column<string>(nullable: false),
                     DataGeracao = table.Column<DateTime>(nullable: false),
                     Valor = table.Column<double>(nullable: false)
                 },
@@ -182,6 +189,11 @@ namespace OBM_Project.Migrations
                 column: "AreaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TB_Demanda_ClientesId",
+                table: "TB_Demanda",
+                column: "ClientesId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TB_Orcamentos_NecessidadeId",
                 table: "TB_Orcamentos",
                 column: "NecessidadeId");
@@ -205,9 +217,6 @@ namespace OBM_Project.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TB_Clientes");
-
-            migrationBuilder.DropTable(
                 name: "TB_Contatos");
 
             migrationBuilder.DropTable(
@@ -221,6 +230,9 @@ namespace OBM_Project.Migrations
 
             migrationBuilder.DropTable(
                 name: "TB_Area");
+
+            migrationBuilder.DropTable(
+                name: "TB_Clientes");
 
             migrationBuilder.DropTable(
                 name: "TB_Necessidade");

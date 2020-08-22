@@ -40,7 +40,8 @@ namespace OBM_Project.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -54,15 +55,20 @@ namespace OBM_Project.Migrations
 
                     b.Property<int>("AreaId");
 
-                    b.Property<string>("Assunto");
+                    b.Property<string>("Assunto")
+                        .IsRequired();
 
-                    b.Property<string>("Conteudo");
+                    b.Property<string>("Conteudo")
+                        .IsRequired();
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired();
 
-                    b.Property<string>("Telefone");
+                    b.Property<string>("Telefone")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -78,6 +84,8 @@ namespace OBM_Project.Migrations
 
                     b.Property<int>("ClienteId");
 
+                    b.Property<int?>("ClientesId");
+
                     b.Property<DateTime>("DataAbertura");
 
                     b.Property<DateTime>("DataTermino");
@@ -88,6 +96,8 @@ namespace OBM_Project.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientesId");
+
                     b.ToTable("TB_Demanda");
                 });
 
@@ -96,7 +106,8 @@ namespace OBM_Project.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -112,7 +123,8 @@ namespace OBM_Project.Migrations
 
                     b.Property<int>("NecessidadeId");
 
-                    b.Property<string>("Observacao");
+                    b.Property<string>("Observacao")
+                        .IsRequired();
 
                     b.Property<int>("SubTipoServicoId");
 
@@ -136,7 +148,8 @@ namespace OBM_Project.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired();
 
                     b.Property<int>("TipoServicoId");
 
@@ -152,7 +165,8 @@ namespace OBM_Project.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -183,6 +197,13 @@ namespace OBM_Project.Migrations
                         .WithMany()
                         .HasForeignKey("AreaId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("OBM_Project.Models.Demanda.Demandas", b =>
+                {
+                    b.HasOne("OBM_Project.Models.Cliente.Clientes", "Clientes")
+                        .WithMany()
+                        .HasForeignKey("ClientesId");
                 });
 
             modelBuilder.Entity("OBM_Project.Models.Orcamento.Orcamentos", b =>

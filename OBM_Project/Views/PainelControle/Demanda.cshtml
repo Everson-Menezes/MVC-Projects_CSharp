@@ -10,6 +10,9 @@
                 Cliente
             </th>
             <th>
+                Contato
+            </th>
+            <th>
                 Orçamento
             </th>
 
@@ -32,28 +35,31 @@
         {
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClienteId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrcamentoId)
-                    </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Contato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrcamentoId)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataAbertura)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Valor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataTermino)
-                    </td>
-                    <td>
-                        <a asp-action="EditarDemanda" asp-route-id="@item.Id">Editar</a> |
-                        
-                    </td>
-                </tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataAbertura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataTermino)
+            </td>
+            <td>
+                <a asp-action="EditarDemanda" asp-controller="PainelControle" asp-route-id="@item.Id">Editar</a> |
+
+            </td>
+        </tr>
             }
         }
     </tbody>

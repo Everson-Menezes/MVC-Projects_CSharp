@@ -36,10 +36,10 @@
                         @Html.DisplayFor(modelItem => Model.Id)
                     </td>
                     <th>
-                        @Html.DisplayFor(modelItem => Model.Clientes.Nome)
+                        @Html.DisplayFor(modelItem => Model.Cliente.Nome)
                     </th>
                     <td>
-                        @Html.DisplayFor(modelItem => Model.Clientes.Contato)
+                        @Html.DisplayFor(modelItem => Model.Cliente.Contato)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => Model.DataAbertura)
@@ -59,19 +59,19 @@
 </table>
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AlterarOrcamento" asp-controller="Orcamento">
+        <form asp-action="AlterarDemanda" asp-controller="PainelControle">
 
-            <div class="form-group">
+            <div class="form-group; hidden">
                 <label class="control-label">N° Orçamento </label>
                 <input asp-for="Id" class="form-control" />
             </div>
 
-            <div class="form-group">
-                <label asp-for="Valor" class="control-label"></label>
-                <input asp-for="Valor" class="form-control" />
+            <div class="form-group; hidden">
+                <label class="control-label">Data de término</label>
+                <input type="date" asp-for="DataTermino" class="form-control" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-default" />
+                <input type="submit" value="Finalizar" class="btn btn-default" />
             </div>
         </form>
     </div>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -79,7 +80,11 @@ namespace OBM_Project.Services
         }
         public List<Demandas> ListarDemandas()
         {
-            return _ProjectContext.TB_Demanda.OrderBy(x => x.Id).ToList();
+            var demanda  = _ProjectContext.TB_Demanda.Include(y => y.Cliente).Where(x => x.Valor > 0).ToList();
+            
+            return demanda;
+
+
         }
         public Clientes BuscarCliente(string nome)
         {
@@ -87,8 +92,16 @@ namespace OBM_Project.Services
         }
         public Demandas FindById(int id)
         {
-            Demandas retorno = _ProjectContext.TB_Demanda.Include(a => a.Clientes).Where(x => x.Id == id).FirstOrDefault();
+            Demandas retorno = _ProjectContext.TB_Demanda.Include(a => a.Cliente).Where(x => x.Id == id).FirstOrDefault();
             return retorno;
+        }
+        public Demandas AlterarDataTermino(int id, DateTime dtTermino)
+        {
+            Demandas demanda = _ProjectContext.TB_Demanda.AsEnumerable().Where(x => id == x.Id).FirstOrDefault();
+            demanda.DataTermino = DateTime.Now;
+            _ProjectContext.Update(demanda);
+            _ProjectContext.SaveChanges();
+            return demanda;
         }
     }
 }

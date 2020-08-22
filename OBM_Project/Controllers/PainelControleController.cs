@@ -7,7 +7,7 @@ using OBM_Project.Models.Usuario;
 using Newtonsoft.Json;
 using OBM_Project.Models.Cliente;
 using OBM_Project.Models.Demanda;
-
+using System;
 
 namespace OBM_Project.Controllers
 {
@@ -144,11 +144,8 @@ namespace OBM_Project.Controllers
             Clientes retorno = _painelControleServices.BuscarCliente(nomeCliente);
             return retorno;
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult EditarDemanda(int id)
         {
-
             var obj = _painelControleServices.FindById(id);
             if (obj == null)
             {
@@ -156,6 +153,13 @@ namespace OBM_Project.Controllers
             }
             return View(obj);
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AlterarDemanda(int id, DateTime dtTermino)
+        {
+            _painelControleServices.AlterarDataTermino(id, dtTermino);
+            return RedirectToAction("Index", "PainelControle");
+        }
     }
 }
+
