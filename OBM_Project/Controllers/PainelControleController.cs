@@ -124,7 +124,8 @@ namespace OBM_Project.Controllers
         }
         public IActionResult Cliente()
         {
-            return View();
+            var model = _painelControleServices.ListarClientes();
+            return View(model);
         }
         public IActionResult CreateDemanda()
         {
