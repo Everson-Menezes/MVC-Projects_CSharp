@@ -4,10 +4,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OBM_Project.Migrations
 {
-    public partial class Oitava : Migration
+    public partial class Nona : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.Sql("ALTER SCHEMA `obm`  DEFAULT CHARACTER SET utf16  DEFAULT COLLATE utf16_general_ci", suppressTransaction: true);
             migrationBuilder.CreateTable(
                 name: "TB_Area",
                 columns: table => new

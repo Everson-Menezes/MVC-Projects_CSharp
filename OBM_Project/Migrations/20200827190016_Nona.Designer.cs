@@ -9,8 +9,8 @@ using OBM_Project.Data;
 namespace OBM_Project.Migrations
 {
     [DbContext(typeof(OBM_ProjectContext))]
-    [Migration("20200822153915_Oitava")]
-    partial class Oitava
+    [Migration("20200827190016_Nona")]
+    partial class Nona
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
