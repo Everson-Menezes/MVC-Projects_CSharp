@@ -9,6 +9,7 @@ namespace OBM_Project.Models.ViewModels
         public ICollection<SubTipoServico> SubTipoServicos { get; set; }
         public ICollection<Necessidade> Necessidades { get; set; }
         public Orcamentos Orcamentos { get; set; }
-
+        //chama função javascript
+        public string JavascriptToRun { get; set; }
     }
 }

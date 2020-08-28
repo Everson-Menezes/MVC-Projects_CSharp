@@ -6,6 +6,7 @@ using OBM_Project.Models.ViewModels;
 using OBM_Project.Services;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace OBM_Project.Controllers
 {
@@ -36,10 +37,23 @@ namespace OBM_Project.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Solicitar(Orcamentos orcamentos)
         {
-            orcamentos.DataGeracao = DateTime.Now;
-            _orcamentoServices.AdicionarOrcamento(orcamentos);
-            Orcamentos ultimo = _orcamentoServices.SolicitarOrcamento();
-            return Content("Seu orçamento gerou a numeração: " + ultimo.Id);
+            var tipoServico = _orcamentoServices.ListarTipoServicos();
+            var necessidade = _orcamentoServices.ListarNecessidade();
+            var viewModel = new CadastrarOrcamentoViewModel { TipoServicos = tipoServico, Necessidades = necessidade };
+            if (orcamentos.NecessidadeId == 0 || orcamentos.Observacao == null || orcamentos.SubTipoServicoId == 0 || orcamentos.TipoServicoId == 0 || orcamentos.Solicitante == null || orcamentos.SolicitanteContato == null)
+            {
+                viewModel.JavascriptToRun = "Alerta()";
+                return View("CadastrarOrcamento", viewModel);
+            }
+            else
+            {
+                orcamentos.DataGeracao = DateTime.Now;
+                _orcamentoServices.AdicionarOrcamento(orcamentos);
+                Orcamentos ultimo = _orcamentoServices.SolicitarOrcamento();
+                viewModel.JavascriptToRun = "Sucesso()";
+                return View("CadastrarOrcamento", viewModel);
+            }
+            
         }
 
         public IActionResult Visualizar(Orcamentos orcamentos)

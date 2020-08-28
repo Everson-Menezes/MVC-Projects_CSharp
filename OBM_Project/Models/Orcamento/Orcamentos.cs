@@ -8,6 +8,8 @@ namespace OBM_Project.Models.Orcamento
         public int Id { get; set; }
         [Required]
         public string Solicitante { get; set; }
+        [Required]
+        public string SolicitanteContato { get; set; }
         public TipoServico TipoServico { get; set; }
         public int TipoServicoId { get; set; }
         [Required]
@@ -36,5 +38,6 @@ namespace OBM_Project.Models.Orcamento
             Solicitante = solicitante;
             DataGeracao = DateTime.Now;
         }
+        
     }
 }
