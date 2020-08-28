@@ -9,7 +9,7 @@ using OBM_Project.Data;
 namespace OBM_Project.Migrations
 {
     [DbContext(typeof(OBM_ProjectContext))]
-    [Migration("20200827190016_Nona")]
+    [Migration("20200828152353_Nona")]
     partial class Nona
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -127,6 +127,9 @@ namespace OBM_Project.Migrations
                         .IsRequired();
 
                     b.Property<string>("Solicitante")
+                        .IsRequired();
+
+                    b.Property<string>("SolicitanteContato")
                         .IsRequired();
 
                     b.Property<int>("SubTipoServicoId");

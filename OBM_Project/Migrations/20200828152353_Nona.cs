@@ -8,7 +8,6 @@ namespace OBM_Project.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql("ALTER SCHEMA `obm`  DEFAULT CHARACTER SET utf16  DEFAULT COLLATE utf16_general_ci", suppressTransaction: true);
             migrationBuilder.CreateTable(
                 name: "TB_Area",
                 columns: table => new
@@ -154,6 +153,7 @@ namespace OBM_Project.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Solicitante = table.Column<string>(nullable: false),
+                    SolicitanteContato = table.Column<string>(nullable: false),
                     TipoServicoId = table.Column<int>(nullable: false),
                     SubTipoServicoId = table.Column<int>(nullable: false),
                     NecessidadeId = table.Column<int>(nullable: false),

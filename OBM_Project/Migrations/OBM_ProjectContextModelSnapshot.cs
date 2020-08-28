@@ -127,6 +127,9 @@ namespace OBM_Project.Migrations
                     b.Property<string>("Solicitante")
                         .IsRequired();
 
+                    b.Property<string>("SolicitanteContato")
+                        .IsRequired();
+
                     b.Property<int>("SubTipoServicoId");
 
                     b.Property<int>("TipoServicoId");
