@@ -22,6 +22,7 @@ namespace OBM_Project.Controllers
             var tipoServico = _orcamentoServices.ListarTipoServicos();
             var necessidade = _orcamentoServices.ListarNecessidade();
             var model = new CadastrarOrcamentoViewModel { TipoServicos = tipoServico, Necessidades = necessidade };
+
             return View(model);
         }
         [HttpPost]
@@ -49,11 +50,11 @@ namespace OBM_Project.Controllers
                 orcamentos.DataGeracao = DateTime.Now;
                 _orcamentoServices.AdicionarOrcamento(orcamentos);
                 Orcamentos ultimo = _orcamentoServices.SolicitarOrcamento();
-                viewModel.Orcamentos.Id = ultimo.Id;
-                viewModel.JavascriptToRun = "Sucesso()";
+                int obj = ultimo.Id;
+                viewModel.NumeracaoOrcamento = obj;
+                viewModel.JavascriptToRun = "Sucesso()"; 
                 return View("CadastrarOrcamento", viewModel);
             }
-            
         }
 
         public IActionResult Visualizar(Orcamentos orcamentos)
