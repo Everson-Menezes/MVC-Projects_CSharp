@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OBM_Project.Data;
 using OBM_Project.Models.Contato;
+using OBM_Project.Models.ViewModels;
 using OBM_Project.Services;
 
 namespace OBM_Project.Controllers
@@ -25,9 +26,28 @@ namespace OBM_Project.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Mensagem(Contatos contatos)
         {
+            var areas = _ContatoServices.ListarAreas();
+            var viewModel = new ContatosViewModel { Areas = areas };
+            
+            if (contatos.Conteudo == null || contatos.AreaId == 0 || contatos.Assunto == null || contatos.Email == null || contatos.Nome == null || contatos.Telefone == null)
+            {
+                viewModel.JavascriptToRun = "Alerta()";
+                viewModel.Alertas = "Por favor preencha todos os campos!";
+                return View("Contact", viewModel);
+            }
             _ContatoServices.AdicionarContato(contatos);
+            viewModel.JavascriptToRun = "Alerta()";
+            viewModel.Alertas = "Contato recebido com sucesso.!";
+            
+            return View("Contact", viewModel);
+        }
 
-            return Content("Contato recebido com sucesso.");
+        public IActionResult Contact()
+        {
+            var areas = _ContatoServices.ListarAreas();
+            var viewModel = new ContatosViewModel { Areas = areas };
+            
+            return View(viewModel);
         }
     }
 }

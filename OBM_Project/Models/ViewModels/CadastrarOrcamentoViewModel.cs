@@ -12,5 +12,6 @@ namespace OBM_Project.Models.ViewModels
         //chama função javascript
         public string JavascriptToRun { get; set; }
         public int NumeracaoOrcamento { get; set; }
+        public string Alertas { get; set; }
     }
 }

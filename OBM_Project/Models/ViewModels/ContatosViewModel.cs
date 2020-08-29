@@ -7,5 +7,7 @@ namespace OBM_Project.Models.ViewModels
     {
         public ICollection<Area> Areas { get; set; }
         public Contatos Contatos { get; set; }
+        public string JavascriptToRun { get;  set; }
+        public string Alertas { get;  set; }
     }
 }

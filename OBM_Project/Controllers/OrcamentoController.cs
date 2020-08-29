@@ -43,6 +43,7 @@ namespace OBM_Project.Controllers
             if (orcamentos.NecessidadeId == 0 || orcamentos.Observacao == null || orcamentos.SubTipoServicoId == 0 || orcamentos.TipoServicoId == 0 || orcamentos.Solicitante == null || orcamentos.SolicitanteContato == null)
             {
                 viewModel.JavascriptToRun = "Alerta()";
+                viewModel.Alertas = "Por favor preencha todos os campos!";
                 return View("CadastrarOrcamento", viewModel);
             }
             else
@@ -59,6 +60,15 @@ namespace OBM_Project.Controllers
 
         public IActionResult Visualizar(Orcamentos orcamentos)
         {
+            var tipoServico = _orcamentoServices.ListarTipoServicos();
+            var necessidade = _orcamentoServices.ListarNecessidade();
+            var viewModel = new CadastrarOrcamentoViewModel { TipoServicos = tipoServico, Necessidades = necessidade };
+            if (orcamentos.Id == 0 && orcamentos.Solicitante == null)
+            {
+                viewModel.JavascriptToRun = "Alerta()";
+                viewModel.Alertas = "Por favor informar número do orçamento e o solicitante!";
+                return View("CadastrarOrcamento", viewModel);
+            }
             var obj = _orcamentoServices.VisualizarOrcamento(orcamentos);
             if (obj.Valor > 0 )
             {
@@ -67,11 +77,15 @@ namespace OBM_Project.Controllers
                     TempData["Orcamento"] = JsonConvert.SerializeObject(obj);
                     return View(obj);
                 }
-                return Content("Solicitante informado está divergente");
+                viewModel.JavascriptToRun = "Alerta()";
+                viewModel.Alertas = "Solicitante informado está divergente do vinculado ao orçamento.";
+                return View("CadastrarOrcamento", viewModel);
             }
             else
             {
-                return Content("Seu orçamento está em cotação, por favor aguarde!");
+                viewModel.JavascriptToRun = "Alerta()";
+                viewModel.Alertas = "Seu orçamento está em cotação, por favor aguarde!";
+                return View("CadastrarOrcamento", viewModel); 
             }
         }
         public IActionResult Imprimir()

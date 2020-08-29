@@ -28,13 +28,6 @@ namespace OBM_Project.Controllers
         {
             return View();
         }
-
-        public IActionResult Contact()
-        {
-            var areas = _ContatoServices.ListarAreas();
-            var viewModel = new ContatosViewModel { Areas = areas };
-            return View(viewModel);
-        }
         public IActionResult Services()
         {
             return View();
